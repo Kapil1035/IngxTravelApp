@@ -49,21 +49,29 @@
       <form:SimpleForm id="_IDGenSimpleForm2"  editable="true"  layout="ResponsiveGridLayout" width="350px">
        <Text id="_IDGenText4" text="Name of Passenger:"></Text>
    
-        <Select
+        <!-- <Select
 
-            id="NameOfPassenger00" width="300px" selectedKey="{Employee}" items="{/Employee}" change=".nameofPassenger"
+            id="NameOfPassenger00"  width="300px"  items="{/Employee}" change=".nameofPassenger"
         >
-            <items>
-                <core:Item id="_IDGenItem11"  text="{Name}" />
+        <items> 
+                <core:Item id="_IDGenItem11"  text="{Empid}-{Name}" />
             </items>
 
+        </Select> -->
+        <Select
+
+            id="NameOfPassenger00" width="300px" items="{/Employee}"  change=".nameofPassenger"
+        >
+            <items>
+                <core:Item id="_IDGenItem11"  text="{Empid}-{Name}" />
+            </items>
         </Select>
         <Select
 
             id="NameOfPassenger01" width="300px" items="{/Employee}"  change=".nameofPassenger1"
         >
             <items>
-                <core:Item id="_IDGenItem12"  text="{Name}" />
+                <core:Item id="_IDGenItem12"  text="{Empid}-{Name}" />
             </items>
         </Select>
         <Select
@@ -71,7 +79,7 @@
             id="NameOfPassenger02" width="300px" items="{/Employee}"  change=".nameofPassenger2" 
         >
             <items>
-                <core:Item id="_IDGenItem13"  text="{Name}" />
+                <core:Item id="_IDGenItem13"  text="{Empid}-{Name}" />
             </items>
         </Select>
         <Select
@@ -79,7 +87,7 @@
             id="NameOfPassenger03" width="300px" items="{/Employee}"  change=".nameofPassenger3" 
         >
             <items>
-                <core:Item id="_IDGenItem14"  text="{Name}" />
+                <core:Item id="_IDGenItem14"  text="{Empid}-{Name}" />
             </items>
         </Select>
         <Select
@@ -87,7 +95,7 @@
             id="NameOfPassenger04" width="300px" items="{/Employee}"  change=".nameofPassenger4"
         >
             <items>
-                <core:Item id="_IDGenItem15"  text="{Name}" />
+                <core:Item id="_IDGenItem15"  text="{Empid}-{Name}" />
             </items>
         </Select>
               </form:SimpleForm>

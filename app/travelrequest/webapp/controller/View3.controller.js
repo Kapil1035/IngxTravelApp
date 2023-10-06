@@ -45,6 +45,9 @@ sap.ui.define([
         var field;
         var id = 1;
         var PassengerName1; var PassengerName2; var PassengerName3; var PassengerName4; var PassengerName5;
+        var PassengerName1split; var PassengerName2split; var PassengerName3split; var PassengerName4split; var PassengerName5split;
+        var PassengerName1ID; var PassengerName2ID; var PassengerName3ID; var PassengerName4ID; var PassengerName5ID;
+        var PassengerName1Name; var PassengerName2Name; var PassengerName3Name; var PassengerName4Name; var PassengerName5Name;
         var origin; var destination;
         var billable_value;
         var BillableCustomer;
@@ -96,35 +99,169 @@ sap.ui.define([
                 location.reload()
             },
 
-            onSubmit: function () {
+            enableSubmitButton:function(){
+                if(tripType=="Round_Trip"){
+                // console.log("hello");
+                if(PassengerNameArr){
 
+                    if(origin){
 
+                        if(destination){
+
+                            if(billable_value=="Yes"){
+
+                            if(BillableCustomer){
+
+                                if(Depdate){
+
+                                    if(Arrdate){
+  
+                                    if(Retdate){
+  
+                                      if(NumberOfdays>=0){
+  
+                                          this.getView().byId("_IDGenButton1").setEnabled(true)
+  
+                                      }
+  
+                                    }
+  
+                                }
+  
+                                  }
+
+                            }
+
+                            }
+
+                            else{
+
+                                if(Depdate){
+
+                                  if(Arrdate){
+
+                                  if(Retdate){
+
+                                    if(NumberOfdays>=0){
+
+                                        this.getView().byId("_IDGenButton1").setEnabled(true)
+
+                                    }
+
+                                  }
+
+                                }
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                }
+            }
+            else if(tripType=="One_way"){
+                if(PassengerNameArr){
+
+                    if(origin){
+
+                        if(destination){
+
+                            if(billable_value=="Yes"){
+
+                            if(BillableCustomer){
+
+                                if(Depdate){
+
+                                    if(Arrdate){
+  
+                                    this.getView().byId("_IDGenButton1").setEnabled(true)
+                                   
+  
+                                    }
+  
+                                  }
+
+                            }
+
+                            }
+
+                            else{
+
+                                if(Depdate){
+
+                                  if(Arrdate){
+
+                                  this.getView().byId("_IDGenButton1").setEnabled(true)
+                                 
+
+                                  }
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                }
+            }
+           
             },
 
-            nameofPassenger: function () {
+            nameofPassenger: function() {
                 PassengerName1 = this.getView().byId("NameOfPassenger00").getSelectedItem().getText()
-                console.log(PassengerName1);
+                PassengerName1split = PassengerName1.split("-"); 
+                PassengerName1ID=PassengerName1split[0];
+                PassengerName1Name=PassengerName1split[1];               
+                console.log(PassengerName1ID);
+                console.log(PassengerName1Name);
                 PassengerNameArr.push(PassengerName1)
+                this.enableSubmitButton()
             },
             nameofPassenger1: function () {
                 PassengerName2 = this.getView().byId("NameOfPassenger01").getSelectedItem().getText()
-                console.log(PassengerName2);
+                PassengerName2split = PassengerName2.split("-"); 
+                PassengerName2ID=PassengerName2split[0];
+                PassengerName2Name=PassengerName2split[1];               
+                console.log(PassengerName2ID);
+                console.log(PassengerName2Name);
                 PassengerNameArr.push(PassengerName2)
+                this.enableSubmitButton()
+
             },
             nameofPassenger2: function () {
                 PassengerName3 = this.getView().byId("NameOfPassenger02").getSelectedItem().getText()
-                console.log(PassengerName3);
+               PassengerName3split=PassengerName3.split("-");
+               PassengerName3ID=PassengerName3split[0];
+               PassengerName3Name=PassengerName3split[1];
+               console.log(PassengerName3ID);
+               console.log(PassengerName3Name);
                 PassengerNameArr.push(PassengerName3)
+                this.enableSubmitButton()
             },
             nameofPassenger3: function () {
                 PassengerName4 = this.getView().byId("NameOfPassenger03").getSelectedItem().getText()
-                console.log(PassengerName4);
+                PassengerName4split=PassengerName4.split("-");
+                PassengerName4ID=PassengerName4split[0];
+                PassengerName4Name=PassengerName4split[1];
+                console.log(PassengerName4ID);
+                console.log(PassengerName4Name);
                 PassengerNameArr.push(PassengerName4)
+                this.enableSubmitButton()
             },
             nameofPassenger4: function () {
                 var PassengerName5 = this.getView().byId("NameOfPassenger04").getSelectedItem().getText()
-                console.log(PassengerName5);
+                PassengerName5split=PassengerName5.split("-");
+                PassengerName5ID=PassengerName5split[0];
+                PassengerName5Name=PassengerName5split[1];
+                console.log(PassengerName5ID);
+                console.log(PassengerName5Name);
                 PassengerNameArr.push(PassengerName5)
+                this.enableSubmitButton()
             },
             backButton: function () {
                 var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
@@ -181,6 +318,7 @@ sap.ui.define([
                     alert("Origin or Destination can't be same")
                     this.getView().byId("city2").getSelectedItem().setValue("")
                 }
+                this.enableSubmitButton()
             },
 
 
@@ -198,7 +336,10 @@ sap.ui.define([
                 console.log(depDate);
                 console.log(depMonth);
                 console.log(depYear);
+                this.enableSubmitButton();
             },
+
+           
 
             handleChange: function (oEvent) {
                 ArroDatePicker = oEvent.getSource();
@@ -227,7 +368,8 @@ sap.ui.define([
                         alert("Arrival Date not valid")
                     }
                 }
-
+                this.enableSubmitButton();
+               
                 console.log(arrDate);
                 console.log(arrMonth);
                 console.log(arrYear);
@@ -271,30 +413,7 @@ sap.ui.define([
                     hotelAccVal = "Yes"
                     console.log(hotelAccVal);
                 }
-
-                if (PassengerNameArr) {
-                    if (origin) {
-                        if (destination) {
-                            if (billable_value == "Yes") {
-                                if (BillableCustomer) {
-                                    this.getView().byId("_IDGenButton1").setEnabled(true)
-                                }
-                            }
-                            else {
-                                if (Depdate) {
-                                    if (Arrdate)
-                                        if (Retdate) {
-                                            if (NumberOfdays >= 0) {
-                                                this.getView().byId("_IDGenButton1").setEnabled(true)
-                                            }
-                                        }
-
-                                }
-                            }
-                        }
-                    }
-                }
-
+                this.enableSubmitButton();
 
                 console.log(retDate);
                 console.log(retMonth);
@@ -313,10 +432,14 @@ sap.ui.define([
                     this.getView().byId("BillableCustomer").setEnabled(false)
 
                 }
+                this.enableSubmitButton();
+
             },
 
             BillableCustomer: function () {
                 BillableCustomer = this.getView().byId("BillableCustomer").getSelectedItem().getText();
+                this.enableSubmitButton();
+
                 console.log(BillableCustomer);
             },
 
@@ -378,25 +501,10 @@ sap.ui.define([
 
             onSubmit: function () {
                 var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-                travelIdCount = travelIdCount + 1
-                console.log(travelIdCount);
-                if (travelIdCount < 10) {
-                    travelId = `ingenxtec000${travelIdCount}`
-                    console.log(travelId);
-                }
-                else if (travelIdCount >= 10 && travelIdCount < 100) {
-                    travelId = `ingenxtec00${travelIdCount}`
-                }
-                else if (travelIdCount >= 100 && travelIdCount < 1000) {
-                    travelId = `ingenxtec0${travelIdCount}`
-                }
-                else if (travelIdCount >= 1000) {
-                    travelId = `ingenxtec${travelIdCount}`
-                }
                 var oTravel = {
-                    "travelId": "87887980",
-                    "empId_Empid": "",
-                    "empName_Empid": PassengerName1,
+                    "travelId": "",
+                    "empId_Empid": PassengerName1ID,
+                    "empName_Empid": PassengerName1Name,
                     "origin": origin,
                     "destination": destination,
                     "dateOfDeparture": "2023-10-11",

@@ -3,9 +3,9 @@ POST http://localhost:4004/odata/v4/travel/insertTravel
 Content-Type: application/json
 
 {
- "travelId":"13119",
+ "travelId":"",
  "empId_Empid":"I102222",
- "empName_Empid":"Mohin",
+ "empName_Empid":"sdfg",
  "origin":"delhi",
  "destination":"noida",
  "dateOfDeparture":"2023-10-11",

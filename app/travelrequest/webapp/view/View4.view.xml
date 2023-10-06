@@ -1,50 +1,199 @@
-<mvc:View  controllerName="travelrequest.controller.View4"
+<mvc:View
+
+    controllerName="travelrequest.controller.View4"
+
     xmlns:html="http://www.w3.org/1999/xhtml"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+
+    xmlns:mvc="sap.ui.core.mvc"
+
+    displayBlock="true"
+
     xmlns="sap.m"
-     xmlns:form="sap.ui.layout.form"
-      xmlns:core="sap.ui.core">
-     <Page id="_IDGenPage1" title="Travellers Detail" titleAlignment="Center" >
-    <form:SimpleForm id="_IDGenSimpleForm1" >
-      <core:Title id="_IDGenTitle1" text="" />
 
-     <Label id="_IDGenLabel1" text="Travel ID" ></Label>
+    xmlns:form="sap.ui.layout.form"
 
-     <Text id="_IDGenText1"  text="{origin}"></Text>
+    xmlns:core="sap.ui.core"
 
-     <!-- <Label id="_IDGenLabel2" text="Employee Name" ></Label>
+>
 
-     <Text id="_IDGenText2"  text="{passengerName}"></Text>
+    <Page id="_IDGenPage1"
 
-     <Label id="_IDGenLabel3" text="Mode of Transport" ></Label>
+        title="Travellers Detail"
 
-     <Text id="_IDGenText3"  text="{travelMode}"></Text>
+        titleAlignment="Center"
 
-    
-      <Label id="_IDGenLabel6" text="Travel Status" ></Label>
+    >
 
-     <Text id="_IDGenText6"  text="{travelStatus}"></Text>
-       <core:Title id="_IDGenTitle2" text="" />
-    
-       <Label id="_IDGenLabel4" text="Origin" ></Label>
+        <form:SimpleForm id="_IDGenSimpleForm1">
 
-     <Text id="_IDGenText4"  text="{origin}"></Text>
+            <core:Title id="_IDGenTitle1" text="" />
 
-     <Label id="_IDGenLabel5" text="Destination" ></Label>
+ 
 
-     <Text id="_IDGenText5"  text="{destination}"></Text>
+            <Label
 
-    
+                id="_IDGenLabel1"
 
-     <Label id="_IDGenLabel7" text="Hotel Accomodation" ></Label>
+                text="Travel ID"
 
-     <Text id="_IDGenText7"  text="{Accomandation}"></Text>
+            />
 
-     <Label id="_IDGenLabel8" text="Billable" ></Label>
+ 
 
-     <Text id="_IDGenText8"  text="{billable}"></Text> -->
-    </form:SimpleForm  >
-  
-     </Page>
-  
+            <Text
+
+                id="_IDGenText1"
+
+                text="{travelId}"
+
+            />
+
+ 
+
+            <Label
+
+                id="_IDGenLabel2"
+
+                text="Employee Name"
+
+            />
+
+ 
+
+            <Text
+
+                id="_IDGenText2"
+
+                text="{empName_Empid}"
+
+            />
+
+ 
+
+            <Label
+
+                id="_IDGenLabel3"
+
+                text="Mode of Transport"
+
+            />
+
+ 
+
+            <Text
+
+                id="_IDGenText3"
+
+                text="{travelMode}"
+
+            />
+
+ 
+
+            <Label
+
+                id="_IDGenLabel6"
+
+                text="Travel Status"
+
+            />
+
+ 
+
+            <Text
+
+                id="_IDGenText6"
+
+                text="{travelStatus}"
+
+            />
+
+ 
+
+            <core:Title id="_IDGenTitle2" text="" />
+
+ 
+
+            <Label
+
+                id="_IDGenLabel4"
+
+                text="Origin"
+
+            />
+
+ 
+
+            <Text
+
+                id="_IDGenText4"
+
+                text="{origin}"
+
+            />
+
+ 
+
+            <Label
+
+                id="_IDGenLabel5"
+
+                text="Destination"
+
+            />
+
+ 
+
+            <Text
+
+                id="_IDGenText5"
+
+                text="{destination}"
+
+            />
+
+ 
+
+            <Label
+
+                id="_IDGenLabel7"
+
+                text="Hotel Accomodation"
+
+            />
+
+ 
+
+            <Text
+
+                id="_IDGenText7"
+
+                text="{Accomandation}"
+
+            />
+
+ 
+
+            <Label
+
+                id="_IDGenLabel8"
+
+                text="Billable"
+
+            />
+
+ 
+
+            <Text
+
+                id="_IDGenText8"
+
+                text="{billable}"
+
+            />
+
+        </form:SimpleForm>
+
+    </Page>
+
 </mvc:View>

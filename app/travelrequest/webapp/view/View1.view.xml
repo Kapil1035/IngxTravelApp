@@ -35,7 +35,7 @@
                                         class="sapUiSmallMarginBottom"
                                         name="Name"
                                         selectionChange=".onSelectionChange"
-                                        items="{path: '/Travel', templateShareable: true }"
+                                        items="{path: '/insertTravel', templateShareable: true }"
                                     >
                                         <core:Item
                                             id="_IDGenItem44"
@@ -133,7 +133,7 @@
         <f:content>
             <Table
                 id="table"
-                inset="false"
+                inset="false" mode="MultiSelect"
                 items="{                          path: '/insertTravel'                      }"
             >
                 <headerToolbar>
@@ -154,11 +154,13 @@
                             press="onPress1"
                             type="Emphasized"
                         />
+                        <Button press="onDeleteLineItem" tooltip="Delete Selected Line Items"
+
+                        id="deleteLineItem" icon="sap-icon://delete" text="Delete"/>
                     </OverflowToolbar>
                 </headerToolbar>
 
                 <columns>
-                   
                     <Column
                         id="_IDGenColumn14"
                         minScreenWidth="Tablet"
