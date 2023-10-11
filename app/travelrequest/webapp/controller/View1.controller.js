@@ -97,7 +97,10 @@ sap.ui.define([
      
                 }
 
-            //  var oOrigin = this.getView().byId("input1").getSelectedItem().getText();            
+             var oOrigin = this.getView().byId("input1").getSelectedItem().getText(); 
+             var oOriginSplit=oOrigin.split("-") 
+             var oOriginName=oOriginSplit[0]      
+             var oOriginId=oOriginSplit[1]    
             //  var oOrigin1 = this.getView().byId("input2").getSelectedItem().getText();
              
            
@@ -105,22 +108,23 @@ sap.ui.define([
             //  console.log(oOrigin1);
             //   var oOrigin2 = this.getView().byId("input3").getValue(); 
             //   var startDate=Date.parse(oOrigin2)           
-            //  console.log(oOrigin);   
+             console.log(oOriginName);   
+             console.log(oOriginId);
             //  console.log("hello");
             //  console.log(typeof(oOrigin2));      
             //  var oOrigin3 = this.getView().byId("input4").getValue();            
 
             //  var oSearch = oEvent.getParameter("query");
-            //  var oFilter = new Filter("empId_Empid", FilterOperator.Contains, oOrigin);            
+             var oFilter = new Filter("Name", FilterOperator.Contains, oOriginName);            
             //  var oFilter1 = new Filter("travelStatus", FilterOperator.Contains, oOrigin1);            
             //  var oFilter2 = new Filter("dateOfDeparture",FilterOperator.Contains, oOrigin2);            
             //  var oFilter3 = new Filter("",FilterOperator.Contains, oOrigin3);            
 
-            //  var oList = this.getView().byId("table");
+             var oList = this.getView().byId("table");
 
             //  var aFilter =[oFilter,oFilter1] ;
 
-            //  oList.getBinding("items").filter(aFilter,FilterType.Application);
+             oList.getBinding("items").filter(oFilter,FilterType.Application);
             //  oList.getBinding("items").filter(oFilter1,FilterType.Application);
 
  

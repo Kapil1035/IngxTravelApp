@@ -233,6 +233,7 @@
  <Toolbar id="_IDGenToolbar1" >
 
  <ToolbarSpacer id="_IDGenToolbarSpacer1" ></ToolbarSpacer>
+  <Button id="backToFirst" text="Back" press="backToFirst" width="100px"></Button>
 
  <Button id="_IDGenButton1" type="Emphasized" text ="Next" width="150px" press="onNext"></Button>
 

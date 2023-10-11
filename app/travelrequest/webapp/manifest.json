@@ -114,7 +114,7 @@
         },
         {
           "name": "RouteView3",
-          "pattern": "page3/{travelType}/{travelMode}/{NumberOfPassenger}/{tripType}",
+          "pattern": "page3/{travelType}/{travelMode}/{NumberOfPassenger}/{tripType}/{countPassenger}",
           "target": [
             "TargetView3"
           ]

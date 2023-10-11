@@ -19,6 +19,7 @@ sap.ui.define([
         var travelMode;
         var NumberOfPassenger;
         var tripType;
+        var countPassenger=0;
         return Controller.extend("travelrequest.controller.View2", {
 
             onInit: function () {
@@ -30,61 +31,59 @@ sap.ui.define([
 
             },
 
+            AllDetail:function(){
+                if(tripType=="select" || NumberOfPassenger=="select" || travelMode=="select" || travelType=="select"){
+                 alert("Please fill the valid value");
+                 this.getView().byId("_IDGenButton1").setEnabled(false);
+                }
+                // else if(NumberOfPassenger=="select"){
+                //     alert("Please fill the valid value in NumberOfPassenger")
+                //     this.getView().byId("_IDGenButton1").setEnabled(false);
 
+                // }
+                // else if(travelMode=="select"){
+                //     alert("Please fill the valid value in TravelMode");
+                //     this.getView().byId("_IDGenButton1").setEnabled(false);
+                // }
+                // else if(travelType=="select"){
+                //     alert("Please fill the valid value in TravelType");
+                //     this.getView().byId("_IDGenButton1").setEnabled(false);
+                // }
+                else{
+                if (travelType && travelMode && tripType &&  NumberOfPassenger ) {
+                  
+                                this.getView().byId("_IDGenButton1").setEnabled(true);
+
+                }
+            }
+            },
+
+            backToFirst:function(){
+                var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+                oRouter.navTo("RouteView1")
+            },
 
             travelType: function () {
                 travelType = this.getView().byId("country").getSelectedItem().getText()
-                if (travelType) {
-                    if (travelMode) {
-                        if (NumberOfPassenger) {
-                            if (tripType) {
-                                this.getView().byId("_IDGenButton1").setEnabled(true);
-                            }
-                        }
-                    }
-                }
+               this.AllDetail()
                 console.log(travelType);
             },
 
             TravelMode: function () {
                 travelMode = this.getView().byId("country1").getSelectedItem().getText()
-                if (travelType) {
-                    if (travelMode) {
-                        if (NumberOfPassenger) {
-                            if (tripType) {
-                                this.getView().byId("_IDGenButton1").setEnabled(true);
-                            }
-                        }
-                    }
-                }
+                this.AllDetail();
                 console.log(travelMode);
             },
             NumberOfPassenger: function () {
+                countPassenger++;
                 NumberOfPassenger = this.getView().byId("country11").getSelectedItem().getText();
-                if (travelType) {
-                    if (travelMode) {
-                        if (NumberOfPassenger) {
-                            if (tripType) {
-                                this.getView().byId("_IDGenButton1").setEnabled(true);
-                            }
-                        }
-                    }
-                }
+                this.AllDetail()
                 console.log(NumberOfPassenger);
             },
 
             TripType: function () {
                 tripType = this.getView().byId("country2").getSelectedItem().getText()
-                if (travelType) {
-                    if (travelMode) {
-                        if (NumberOfPassenger) {
-                            if (tripType) {
-                                this.getView().byId("_IDGenButton1").setEnabled(true);
-                            }
-                        }
-                    }
-                }
-                console.log(travelType);
+                this.AllDetail();
                 console.log(tripType);
             },
 
@@ -100,7 +99,8 @@ sap.ui.define([
                     "travelType": travelType,
                     "travelMode": travelMode,
                     "NumberOfPassenger": NumberOfPassenger,
-                    "tripType": tripType
+                    "tripType": tripType,
+                    "countPassenger":countPassenger
 
                 });
 

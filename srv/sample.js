@@ -4,9 +4,6 @@ function generateOrgID() {
     const orgID = `Ingenx${counter.toString().padStart(4, '0')}`;
 
     console.log(orgID);
-
-    
-
     return orgID;
 
 }
