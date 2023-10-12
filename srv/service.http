@@ -3,7 +3,7 @@ POST http://localhost:4004/odata/v4/travel/insertTravel
 Content-Type: application/json
 
 {
- "travelId":"",
+ "travelId":"ING12345",
  "empId_Empid":"I102222",
  "empName_Empid":"sdfg",
  "origin":"delhi",

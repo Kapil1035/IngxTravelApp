@@ -645,8 +645,8 @@ sap.ui.define([
                     .then(function (res) {
                         if (res) {
                             console.log("Entity created successfully");
-                            // oRouter.navTo("RouteView1")
-                            // location.reload();
+                            oRouter.navTo("RouteView1")
+                            location.reload();
                         }
                         else {
                             console.log("Failed");
