@@ -43,7 +43,7 @@ sap.ui.define([
         var depDate; var depMonth; var depYear;
         var PassengerNameArr = [];
         var field;
-        var id = 1;
+        var id = 0;
         var PassengerName1; var PassengerName2; var PassengerName3; var PassengerName4; var PassengerName5;
         var PassengerName1split; var PassengerName2split; var PassengerName3split; var PassengerName4split; var PassengerName5split;
         var PassengerName1ID; var PassengerName2ID; var PassengerName3ID; var PassengerName4ID; var PassengerName5ID;
@@ -72,6 +72,7 @@ sap.ui.define([
         return Controller.extend("travelrequest.controller.View3", {
 
             onInit: function (oEvent) {
+                this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
                 // var rejectBtn = this.getView().byId("_IDGenMultiInput1");
                 //     var rejectBtn = this.getView().byId("_IDGenMultiInput1").setEnabled(false);
                 //     if(rejectBtn.getVisible()) {
@@ -83,74 +84,110 @@ sap.ui.define([
                 this.getView().byId("_IDGenButton1").setEnabled(false)
                 this.getView().byId("BillableCustomer").setEnabled(false)
                 this.getView().byId("_IDGenInput1").setEnabled(false)
-
-
+            
+                // code for hiding epmployee if once selected
                 // console.log({Employee});
                 //    var abbb=this.getView().byId("NameOfPassenger")
                 //    debugger;
                 // console.log(abbb);
-
-
+                
                 sap.ui.core.UIComponent.getRouterFor(this).getRoute('RouteView3').attachPatternMatched(this._onRouteMatched, this)
+                // for (var i = 0; i < 5; i++) {
+                //     var oDropdown = this.getView().byId("NameOfPassenger0" + i);
+                //     oDropdown.attachChange(this.onDropdownChange.bind(this, i));
+
+                // }
             },
 
+            // onDropdownChange: function (index, oEvent) {
+            //     if (!oEvent) {
+            //         // Ensure that the event object is defined
+            //         return;
+            //     }
+
+            //     var oSelectedDropdown = oEvent.getSource();
+            //     var selectedItem = oSelectedDropdown.getSelectedItem();
+
+            //     if (!selectedItem) {
+            //         // No item selected, do nothing
+            //         return;
+            //     }
+
+            //     var oSelectedEmployee = selectedItem.getBindingContext().getObject();
+            //     var oModel = this.getView().getModel();
+
+            //     // Iterate through all dropdowns to remove the selected employee
+            //     for (var i = 0; i < 5; i++) {
+            //         if (i !== index) {
+            //             var oDropdown = this.getView().byId("NameOfPassenger0" + i);
+            //             var oBinding = oDropdown.getBinding("items");
+
+            //             oBinding.filter([
+            //                 new sap.ui.model.Filter("Empid", sap.ui.model.FilterOperator.NE, oSelectedEmployee.Empid)
+            //             ]);
+            //         }
+            //     }
+            // },
 
             Cancel: function () {
-                location.reload()
+                location.reload();
+                this.oRouter.navTo("RouteView1")
             },
 
-            enableSubmitButton:function(){
-                if(tripType=="Round_Trip"){
-                // console.log("hello");
-                if(PassengerNameArr){
+            enableSubmitButton: function () {
+                if (tripType == "Round_Trip") {
+                    // console.log("hello");
+                    if (PassengerNameArr) {
 
-                    if(origin){
+                        if (origin) {
 
-                        if(destination){
+                            if (destination) {
 
-                            if(billable_value=="Yes"){
+                                if (billable_value == "Yes") {
 
-                            if(BillableCustomer){
+                                    if (BillableCustomer) {
 
-                                if(Depdate){
+                                        if (Depdate) {
 
-                                    if(Arrdate){
-  
-                                    if(Retdate){
-  
-                                      if(NumberOfdays>=0){
-  
-                                          this.getView().byId("_IDGenButton1").setEnabled(true)
-  
-                                      }
-  
-                                    }
-  
-                                }
-  
-                                  }
+                                            if (Arrdate) {
 
-                            }
+                                                if (Retdate) {
 
-                            }
+                                                    if (NumberOfdays >= 0) {
 
-                            else{
+                                                        this.getView().byId("_IDGenButton1").setEnabled(true)
 
-                                if(Depdate){
+                                                    }
 
-                                  if(Arrdate){
+                                                }
 
-                                  if(Retdate){
+                                            }
 
-                                    if(NumberOfdays>=0){
-
-                                        this.getView().byId("_IDGenButton1").setEnabled(true)
+                                        }
 
                                     }
 
-                                  }
-
                                 }
+
+                                else {
+
+                                    if (Depdate) {
+
+                                        if (Arrdate) {
+
+                                            if (Retdate) {
+
+                                                if (NumberOfdays >= 0) {
+
+                                                    this.getView().byId("_IDGenButton1").setEnabled(true)
+
+                                                }
+
+                                            }
+
+                                        }
+
+                                    }
 
                                 }
 
@@ -159,95 +196,84 @@ sap.ui.define([
                         }
 
                     }
-
                 }
-            }
-            else if(tripType=="One_way"){
-                if(PassengerNameArr){
+                else if (tripType == "One_way") {
+                    if (PassengerNameArr) {
 
-                    if(origin){
+                        if (origin) {
 
-                        if(destination){
+                            if (destination) {
 
-                            if(billable_value=="Yes"){
+                                if (billable_value == "Yes") {
 
-                            if(BillableCustomer){
+                                    if (BillableCustomer) {
 
-                                if(Depdate){
+                                        if (Depdate) {
+                                            if (Arrdate) {
 
-                                    if(Arrdate){
-  
-                                    this.getView().byId("_IDGenButton1").setEnabled(true)
-                                   
-  
+                                                this.getView().byId("_IDGenButton1").setEnabled(true)
+                                            }
+
+                                        }
                                     }
-  
-                                  }
+                                }
 
-                            }
+                                else {
+                                    if (Depdate) {
 
-                            }
+                                        if (Arrdate) {
 
-                            else{
+                                            this.getView().byId("_IDGenButton1").setEnabled(true)
+                                        }
 
-                                if(Depdate){
-
-                                  if(Arrdate){
-
-                                  this.getView().byId("_IDGenButton1").setEnabled(true)
-                                 
-
-                                  }
-
+                                    }
                                 }
 
                             }
-
                         }
-
                     }
-
                 }
-            }
-           
+
             },
 
-            nameofPassenger: function() {
+            nameofPassenger: function () {
                 PassengerName1 = this.getView().byId("NameOfPassenger00").getSelectedItem().getText()
-                PassengerName1split = PassengerName1.split("-"); 
-                PassengerName1ID=PassengerName1split[0];
-                PassengerName1Name=PassengerName1split[1];               
+                PassengerName1split = PassengerName1.split("-");
+                PassengerName1ID = PassengerName1split[0];
+                PassengerName1Name = PassengerName1split[1];
                 console.log(PassengerName1ID);
                 console.log(PassengerName1Name);
-                PassengerNameArr.push(PassengerName1)
+                PassengerNameArr.push(PassengerName1);
+    
                 this.enableSubmitButton()
             },
             nameofPassenger1: function () {
                 PassengerName2 = this.getView().byId("NameOfPassenger01").getSelectedItem().getText()
-                PassengerName2split = PassengerName2.split("-"); 
-                PassengerName2ID=PassengerName2split[0];
-                PassengerName2Name=PassengerName2split[1];               
+                PassengerName2split = PassengerName2.split("-");
+                PassengerName2ID = PassengerName2split[0];
+                PassengerName2Name = PassengerName2split[1];
                 console.log(PassengerName2ID);
                 console.log(PassengerName2Name);
                 PassengerNameArr.push(PassengerName2)
                 this.enableSubmitButton()
+                
 
             },
             nameofPassenger2: function () {
                 PassengerName3 = this.getView().byId("NameOfPassenger02").getSelectedItem().getText()
-               PassengerName3split=PassengerName3.split("-");
-               PassengerName3ID=PassengerName3split[0];
-               PassengerName3Name=PassengerName3split[1];
-               console.log(PassengerName3ID);
-               console.log(PassengerName3Name);
+                PassengerName3split = PassengerName3.split("-");
+                PassengerName3ID = PassengerName3split[0];
+                PassengerName3Name = PassengerName3split[1];
+                console.log(PassengerName3ID);
+                console.log(PassengerName3Name);
                 PassengerNameArr.push(PassengerName3)
                 this.enableSubmitButton()
             },
             nameofPassenger3: function () {
                 PassengerName4 = this.getView().byId("NameOfPassenger03").getSelectedItem().getText()
-                PassengerName4split=PassengerName4.split("-");
-                PassengerName4ID=PassengerName4split[0];
-                PassengerName4Name=PassengerName4split[1];
+                PassengerName4split = PassengerName4.split("-");
+                PassengerName4ID = PassengerName4split[0];
+                PassengerName4Name = PassengerName4split[1];
                 console.log(PassengerName4ID);
                 console.log(PassengerName4Name);
                 PassengerNameArr.push(PassengerName4)
@@ -255,27 +281,22 @@ sap.ui.define([
             },
             nameofPassenger4: function () {
                 var PassengerName5 = this.getView().byId("NameOfPassenger04").getSelectedItem().getText()
-                PassengerName5split=PassengerName5.split("-");
-                PassengerName5ID=PassengerName5split[0];
-                PassengerName5Name=PassengerName5split[1];
+                PassengerName5split = PassengerName5.split("-");
+                PassengerName5ID = PassengerName5split[0];
+                PassengerName5Name = PassengerName5split[1];
                 console.log(PassengerName5ID);
                 console.log(PassengerName5Name);
                 PassengerNameArr.push(PassengerName5)
                 this.enableSubmitButton()
             },
-            backButton: function () {
-                var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-                oRouter.navTo("RouteView2")
-                location.reload()
-            },
-
-
+        
             _onRouteMatched: function (oEvent) {
                 //  var component = this.getOwnerComponent();
                 //  component.refreshBinding();
                 travelType = oEvent.mParameters.arguments.travelType;
                 travelMode = oEvent.mParameters.arguments.travelMode;
                 NumberOfPassenger = oEvent.mParameters.arguments.NumberOfPassenger;
+                console.log("passenger count :", NumberOfPassenger);
                 tripType = oEvent.mParameters.arguments.tripType;
 
                 if (tripType == "One_way") {
@@ -284,16 +305,19 @@ sap.ui.define([
                     this.getView().byId("_IDGenSwitch1").setEnabled(false)
                 }
 
+                for (let index = 0; index < 5; index++) {
+                    if(index < NumberOfPassenger){
 
-
-                for (let index = 0; index < 5 - NumberOfPassenger; index++) {
-                    let selectfield = this.getView().byId(`NameOfPassenger0${id}`)
-                    if (selectfield.getVisible()) {
-
+                        let selectfield = this.getView().byId(`NameOfPassenger0${id}`)
+                        selectfield.setVisible(true);
+                        selectfield.setSelectedKey("--select");
+                        id = id + 1;
+                    }else {
+                        let selectfield = this.getView().byId(`NameOfPassenger0${id}`)
                         selectfield.setVisible(false);
+                        id = id+1;
 
                     }
-                    id = id + 1;
                     // console.log(id);
                     //  field= this.getView().byId("_IDGenSimpleForm2").addContent(new sap.m.MultiInput({
                     // //   id:"MultiInputPassenger",
@@ -306,6 +330,11 @@ sap.ui.define([
                 }
 
             },
+            backButton: function () {
+                this.oRouter.navTo("RouteView2", {}, true);
+            
+                id =0;
+        },
 
             destination: function () {
                 // console.log(oEvent);
@@ -339,8 +368,6 @@ sap.ui.define([
                 this.enableSubmitButton();
             },
 
-           
-
             handleChange: function (oEvent) {
                 ArroDatePicker = oEvent.getSource();
                 ArrselectedDate = ArroDatePicker.getDateValue();
@@ -369,7 +396,7 @@ sap.ui.define([
                     }
                 }
                 this.enableSubmitButton();
-               
+
                 console.log(arrDate);
                 console.log(arrMonth);
                 console.log(arrYear);
@@ -450,14 +477,8 @@ sap.ui.define([
                 oEvent.getSource().getBinding("items").filter([]);
 
                 if (!oSelectedItem) {
-
-
-
                     return;
-
                 }
-
-
 
                 this.byId("singleCondition").setValue(oSelectedItem.getTitle());
 
@@ -474,9 +495,6 @@ sap.ui.define([
             },
 
             onOpenDialog: function () {
-
-
-
                 // create dialog lazily
 
                 if (!this.pDialog) {
@@ -484,8 +502,6 @@ sap.ui.define([
                     this.pDialog = this.loadFragment({
 
                         name: "travelrequest.view.dialog"
-
-
 
                     });
 

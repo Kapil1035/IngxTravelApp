@@ -7,9 +7,4 @@ function generateOrgID() {
     return orgID;
 
 }
-
-
-
-
-
 module.exports = generateOrgID

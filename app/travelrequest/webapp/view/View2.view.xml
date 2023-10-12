@@ -3,9 +3,6 @@
     xmlns:form="sap.ui.layout.form"
 
     controllerName="travelrequest.controller.View2"
-
-  
-
     xmlns:mvc="sap.ui.core.mvc"
 
     displayBlock="true"
@@ -233,6 +230,7 @@
  <Toolbar id="_IDGenToolbar1" >
 
  <ToolbarSpacer id="_IDGenToolbarSpacer1" ></ToolbarSpacer>
+ <Button id="_IDGenButton2" type="Emphasized" text ="back" width="150px" press=".onBack"></Button>
 
  <Button id="_IDGenButton1" type="Emphasized" text ="Next" width="150px" press="onNext"></Button>
 
