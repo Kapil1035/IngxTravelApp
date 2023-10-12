@@ -147,7 +147,7 @@ entity NationalCities {
 entity Travel {
 
 
-   key travelId        : String;
+   key travelId     : String;
     empId           : Association to Employee;
     empName         : Association to Employee;
     origin          : String;
