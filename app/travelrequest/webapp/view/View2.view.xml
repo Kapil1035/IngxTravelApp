@@ -230,7 +230,6 @@
  <Toolbar id="_IDGenToolbar1" >
 
  <ToolbarSpacer id="_IDGenToolbarSpacer1" ></ToolbarSpacer>
- <Button id="_IDGenButton2" type="Emphasized" text ="back" width="150px" press=".onBack"></Button>
 
  <Button id="_IDGenButton1" type="Emphasized" text ="Next" width="150px" press="onNext"></Button>
 

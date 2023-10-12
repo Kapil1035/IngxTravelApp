@@ -35,11 +35,11 @@
                                         class="sapUiSmallMarginBottom"
                                         name="Name"
                                         selectionChange=".onSelectionChange"
-                                        items="{path: '/insertTravel', templateShareable: true }"
+                                        items="{path: '/Employee', templateShareable: true }"
                                     >
                                         <core:Item
                                             id="_IDGenItem44"
-                                            text="{empId_Empid}"
+                                            text="{Name}-{Empid}"
                                         />
                                     </ComboBox>
                                 </fb:control>
@@ -126,6 +126,12 @@
                             </fb:FilterGroupItem>
                         </fb:filterGroupItems>
                     </fb:FilterBar>
+                    <Button
+                            id="button"
+                            text="create"
+                            press="onPress1"
+                            type="Emphasized"
+                        />
                 </f:content>
             </f:DynamicPageHeader>
         </f:header>
@@ -148,12 +154,7 @@
 
                         <!-- <Label id="_IDGenLabel1" text="Multi selection modes" labelFor="idComboBoxSuccess"></Label> -->
 
-                        <Button
-                            id="button"
-                            text="create"
-                            press="onPress1"
-                            type="Emphasized"
-                        />
+                        
                         <Button press="onDeleteLineItem" tooltip="Delete Selected Line Items"
 
                         id="deleteLineItem" icon="sap-icon://delete" text="Delete"/>

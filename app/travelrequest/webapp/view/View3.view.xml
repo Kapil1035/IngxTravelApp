@@ -60,7 +60,7 @@
         </Select> -->
         <Select
 
-            id="NameOfPassenger00" width="300px" items="{/Employee}" visible="false"  change=".nameofPassenger"
+            id="NameOfPassenger00" width="300px" items="{/Employee}"  change=".nameofPassenger"
         >
             <items>
                 <core:Item id="_IDGenItem11"  text="{Empid}-{Name}" />
@@ -68,7 +68,7 @@
         </Select>
         <Select
 
-            id="NameOfPassenger01" width="300px" visible="false" items="{/Employee}"  change=".nameofPassenger1"
+            id="NameOfPassenger01" width="300px" items="{/Employee}"  change=".nameofPassenger1"
         >
             <items>
                 <core:Item id="_IDGenItem12"  text="{Empid}-{Name}" />
@@ -76,7 +76,7 @@
         </Select>
         <Select
 
-            id="NameOfPassenger02" width="300px" visible="false" items="{/Employee}"  change=".nameofPassenger2" 
+            id="NameOfPassenger02" width="300px" items="{/Employee}"  change=".nameofPassenger2" 
         >
             <items>
                 <core:Item id="_IDGenItem13"  text="{Empid}-{Name}" />
@@ -84,7 +84,7 @@
         </Select>
         <Select
 
-            id="NameOfPassenger03" width="300px" visible="false" items="{/Employee}"  change=".nameofPassenger3" 
+            id="NameOfPassenger03" width="300px" items="{/Employee}"  change=".nameofPassenger3" 
         >
             <items>
                 <core:Item id="_IDGenItem14"  text="{Empid}-{Name}" />
@@ -92,7 +92,7 @@
         </Select>
         <Select
 
-            id="NameOfPassenger04" width="300px" visible="false" items="{/Employee}"  change=".nameofPassenger4"
+            id="NameOfPassenger04" width="300px" items="{/Employee}"  change=".nameofPassenger4"
         >
             <items>
                 <core:Item id="_IDGenItem15"  text="{Empid}-{Name}" />
@@ -117,6 +117,7 @@
 
             width="300px"
             items="{/NationalCities}"
+            change=".origin"
 
         >
 
