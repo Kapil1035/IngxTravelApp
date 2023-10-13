@@ -1,4 +1,4 @@
-
+###
 POST http://localhost:4004/odata/v4/travel/insertTravel
 Content-Type: application/json
 
@@ -24,5 +24,8 @@ Content-Type: application/json
   "billable":"Yes"
 }
 
+
+###
+GET http://localhost:4004/odata/v4/travel/readTravel
 
  

@@ -27,7 +27,18 @@ sap.ui.define([
         return Controller.extend("travelrequest.controller.View1", {
 
             onInit: function () {
-               
+       
+              
+              async function fetchData() {
+                var url="http://localhost:4004/odata/v4/travel/readTravel";
+                fetch(url)
+                .then(res=>console.log(res))
+                .then(res=>console.log(res))
+                .catch(err=>console.log(err))
+            }
+            
+            fetchData();
+
                var rejectBtn= this.getView().byId("table")
                 if(rejectBtn.getVisible()) {
 
@@ -47,6 +58,10 @@ sap.ui.define([
                 });
 
             },
+
+
+
+
 
             onPress1: function () {
 

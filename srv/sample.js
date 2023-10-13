@@ -1,12 +1,14 @@
-const cds = require("@sap/cds");
-
-let counter = 2;
-function generateOrgID() {
-    counter++;
-    const orgID = `Ingenx${counter.toString().padStart(4, '0')}`;
-
-    console.log(orgID);
-    return orgID;
+const cds = require("@sap/cds")
+class travelService extends cds.ApplicationService {
+ init(){
+    const {Travel, insertTravel} = this.entities;
+    this.on("acceptTravel", (req) =>
+    UPDATE(req._target).with({ travelStatus: "APD" })
+  )
+  this.on("rejectTravel", (req) =>
+    UPDATE(req._target).with({ travelStatus: "RJT" })
+  )
+ }
 }
 
-module.exports = generateOrgID
+module.exports = {travelService}

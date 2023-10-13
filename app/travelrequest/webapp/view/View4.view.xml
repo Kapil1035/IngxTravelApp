@@ -54,7 +54,7 @@
 
                 id="_IDGenLabel2"
 
-                text="Employee Name"
+                text="Passenger Name"
 
             />
 
@@ -64,7 +64,7 @@
 
                 id="_IDGenText2"
 
-                text="{empName_Empid}"
+                text="{passengerName}"
 
             />
 

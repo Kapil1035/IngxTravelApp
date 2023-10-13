@@ -197,6 +197,11 @@ sap.ui.define([
                 PassengerName1Name=PassengerName1split[1];               
                 console.log(PassengerName1ID);
                 console.log(PassengerName1Name);
+                if(PassengerName1ID==PassengerName2ID || PassengerName1ID==PassengerName3ID || PassengerName1ID==PassengerName4ID || PassengerName1ID==PassengerName5ID){
+                    alert("Please fill Different name of Different ID");
+                    this.getView().byId("NameOfPassenger00").setSelectedKey("----select")
+                    return
+                }
                 PassengerNameArr.push(PassengerName1Name)
                 // console.log(PassengerNameArr.length);
                 this.enableSubmitButton()
@@ -208,6 +213,11 @@ sap.ui.define([
                 PassengerName2Name=PassengerName2split[1];               
                 console.log(PassengerName2ID);
                 console.log(PassengerName2Name);
+                if(PassengerName2ID==PassengerName1ID || PassengerName2ID==PassengerName3ID || PassengerName2ID==PassengerName4ID || PassengerName2ID==PassengerName5ID){
+                    alert("Please fill Different name of Different ID");
+                    this.getView().byId("NameOfPassenger01").setSelectedKey("----select")
+                    return
+                }
                 PassengerNameArr.push(PassengerName2Name)
                 // console.log(PassengerNameArr);
                 this.enableSubmitButton()
@@ -220,6 +230,11 @@ sap.ui.define([
                PassengerName3Name=PassengerName3split[1];
                console.log(PassengerName3ID);
                console.log(PassengerName3Name);
+               if(PassengerName3ID==PassengerName1ID || PassengerName3ID==PassengerName2ID || PassengerName3ID==PassengerName4ID || PassengerName3ID==PassengerName5ID){
+                alert("Please fill Different name of Different ID");
+                this.getView().byId("NameOfPassenger02").setSelectedKey("----select")
+                return
+            }
                 PassengerNameArr.push(PassengerName3Name)
                 this.enableSubmitButton()
             },
@@ -230,6 +245,11 @@ sap.ui.define([
                 PassengerName4Name=PassengerName4split[1];
                 console.log(PassengerName4ID);
                 console.log(PassengerName4Name);
+                if(PassengerName4ID==PassengerName2ID || PassengerName4ID==PassengerName1ID || PassengerName4ID==PassengerName3ID || PassengerName4ID==PassengerName5ID){
+                    alert("Please fill Different name of Different ID");
+                    this.getView().byId("NameOfPassenger03").setSelectedKey("----select")
+                    return
+                }
                 PassengerNameArr.push(PassengerName4Name)
                 this.enableSubmitButton()
             },
@@ -240,6 +260,11 @@ sap.ui.define([
                 PassengerName5Name=PassengerName5split[1];
                 console.log(PassengerName5ID);
                 console.log(PassengerName5Name);
+                if(PassengerName5ID==PassengerName1ID || PassengerName5ID==PassengerName3ID || PassengerName2ID==PassengerName4ID || PassengerName5ID==PassengerName2ID){
+                    alert("Please fill Different name of Different ID");
+                    this.getView().byId("NameOfPassenger04").setSelectedKey("----select")
+                    return
+                }
                 PassengerNameArr.push(PassengerName5Name)
                 this.enableSubmitButton()
             },
@@ -608,27 +633,55 @@ sap.ui.define([
             },
 
             onSubmit: function () {
+                var [p,q]=PassengerNameArr;
+                console.log(p);
                 var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-                var oTravel = {
-                    "travelId": "",
-                    "empId_Empid": PassengerName1ID,
-                    "empName_Empid": PassengerName1Name,
-                    "origin": origin,
-                    "destination": destination,
-                    "dateOfDeparture": "2023-10-11",
-                    "dateOfArrival": "2023-10-12",
-                    "dateOfReturn": "2023-10-13",
-                    "description": "Welcome buddy",
-                    "price": null,
-                    "travelStatus": "INP",
-                    "noOfDays": NumberOfdays,
-                    "noOfPassengers": NumberOfPassenger,
-                    "passengerName": PassengerNameArr,
-                    "travelType": travelType,
-                    "travelMode": travelMode,
-                    "RoundTrip": tripType,
-                    "Accomandation": "",
-                    "billable": BillableCustomer
+                if(tripType=="One_way"){
+                    var oTravel = {
+                        "travelId": "",
+                        "empId_Empid": PassengerName1ID,
+                        "empName_Empid": PassengerName1Name,
+                        "origin": origin,
+                        "destination": destination,
+                        "dateOfDeparture": `${depDate}-${depMonth}-${depYear}`,
+                        "dateOfArrival": `${arrDate}-${arrMonth}-${arrYear}`,
+                        "dateOfReturn": "",
+                        "description": "Welcome buddy",
+                        "price": null,
+                        "travelStatus": "INP",
+                        "noOfDays": NumberOfdays,
+                        "noOfPassengers": NumberOfPassenger,
+                        "passengerName": PassengerNameArr,
+                        "travelType": travelType,
+                        "travelMode": travelMode,
+                        "RoundTrip": tripType,
+                        "Accomandation": "",
+                        "billable": BillableCustomer
+                    }
+                }
+                else if(tripType=="Round_Trip"){
+
+                    var oTravel = {
+                        "travelId": "",
+                        "empId_Empid": PassengerName1ID,
+                        "empName_Empid": PassengerName1Name,
+                        "origin": origin,
+                        "destination": destination,
+                        "dateOfDeparture": `${depDate}-${depMonth}-${depYear}`,
+                        "dateOfArrival": `${arrDate}-${arrMonth}-${arrYear}`,
+                        "dateOfReturn": `${retDate}-${retMonth}-${retYear}`,
+                        "description": "Welcome buddy",
+                        "price": null,
+                        "travelStatus": "INP",
+                        "noOfDays": NumberOfdays,
+                        "noOfPassengers": NumberOfPassenger,
+                        "passengerName": PassengerNameArr,
+                        "travelType": travelType,
+                        "travelMode": travelMode,
+                        "RoundTrip": tripType,
+                        "Accomandation": "",
+                        "billable": BillableCustomer
+                    }
                 }
 
                 var JsonData = JSON.stringify(oTravel)
@@ -645,8 +698,8 @@ sap.ui.define([
                     .then(function (res) {
                         if (res) {
                             console.log("Entity created successfully");
-                            oRouter.navTo("RouteView1")
-                            location.reload();
+                            // oRouter.navTo("RouteView1")
+                            // location.reload();
                         }
                         else {
                             console.log("Failed");
