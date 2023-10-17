@@ -20,6 +20,7 @@ sap.ui.define([
         var NumberOfPassenger;
         var tripType;
         var countPassenger=0;
+        var tripChange=0;
         return Controller.extend("travelrequest.controller.View2", {
 
             onInit: function () {
@@ -82,9 +83,11 @@ sap.ui.define([
             },
 
             TripType: function () {
+                
                 tripType = this.getView().byId("country2").getSelectedItem().getText()
                 this.AllDetail();
                 console.log(tripType);
+                // console.log(tripChange);
             },
 
 
@@ -101,6 +104,7 @@ sap.ui.define([
                     "NumberOfPassenger": NumberOfPassenger,
                     "tripType": tripType,
                     "countPassenger":countPassenger
+                 
 
                 });
 

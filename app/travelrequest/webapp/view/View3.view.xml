@@ -263,7 +263,7 @@
 
      <Button id="_IDGenButton1"  text="Submit"  press ="onSubmit"></Button>
 
-     <Button id="_IDGenButton2"  text="Save Draft" ></Button>
+     <!-- <Button id="_IDGenButton2"  text="Save Draft" ></Button> -->
 
      <Button id="_IDGenButton3"  text="Cancel" press=".Cancel"></Button>
 

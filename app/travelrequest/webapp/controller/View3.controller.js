@@ -59,6 +59,9 @@ sap.ui.define([
         var travelId;
         var travelIdCount = 0;
         var countPassenger;
+        var tripChange;
+        var PassengerNameData;
+        var hotelAccomodation;
         // var data=oEvent.mParameters.arguments;
 
         //   var tripType=data.tripType;
@@ -81,7 +84,7 @@ sap.ui.define([
                 //    abc.setEnabled(false);
                 // location.reload();
                 
-                
+                // console.log(tripChange);
                 this.getView().byId("_IDGenButton1").setEnabled(false)
                 this.getView().byId("BillableCustomer").setEnabled(false)
                 this.getView().byId("_IDGenInput1").setEnabled(false)
@@ -108,7 +111,7 @@ sap.ui.define([
                 if(tripType=="Round_Trip"){
                 
                 if(PassengerNameArr.length>=1 && origin && destination && billable_value && Depdate && Arrdate && Retdate){
-                    if(PassengerName1=="----select" || PassengerName2=="----select" || PassengerName3=="----select" || PassengerName4=="----select" || PassengerName5=="----select" || billable_value=="select" || origin=="" || destination==""){
+                    if(PassengerName1=="---select-" || PassengerName2=="---select-" || PassengerName3=="---select-" || PassengerName4=="---select-" || PassengerName5=="---select-" || billable_value=="select" || origin=="" || destination==""){
                         alert("Please fill the valid value")
                         this.getView().byId("_IDGenButton1").setEnabled(false)
                     }
@@ -129,7 +132,7 @@ sap.ui.define([
                         }
                         else if(billable_value=="No"){
                             if(PassengerNameArr.length>=1 && origin && destination  && Depdate && Arrdate){
-                            if(PassengerName1=="----select" || PassengerName2=="----select" || PassengerName3=="----select" || PassengerName4=="----select" || PassengerName5=="----select" || origin=="" || destination==""){
+                            if(PassengerName1=="---select-" || PassengerName2=="---select-" || PassengerName3=="---select-" || PassengerName4=="---select-" || PassengerName5=="---select-" || origin=="" || destination==""){
                                 alert("Please fill the valid value")
                                 this.getView().byId("_IDGenButton1").setEnabled(false)
         
@@ -149,7 +152,7 @@ sap.ui.define([
             else if(tripType=="One_way"){
                 console.log("origin-",origin);
                 // if(PassengerNameArr.length>=1 && origin && destination && billable_value){
-                    if(PassengerName1=="----select" || PassengerName2=="----select" || PassengerName3=="----select" || PassengerName4=="----select" || PassengerName5=="----select" || billable_value=="select" || origin=="" || destination=="" || Depdate==""){
+                    if(PassengerName1=="---select-" || PassengerName2=="---select-" || PassengerName3=="---select-" || PassengerName4=="---select-" || PassengerName5=="---select-" || billable_value=="select" || origin=="" || destination=="" || Depdate==""){
                         alert("Please fill the valid value")
                         this.getView().byId("_IDGenButton1").setEnabled(false)
                     }
@@ -170,7 +173,7 @@ sap.ui.define([
                         }
                         else if(billable_value=="No"){
                             if(PassengerNameArr.length>=1 && origin && destination  && Depdate && Arrdate){
-                            if(PassengerName1=="----select" || PassengerName2=="----select" || PassengerName3=="----select" || PassengerName4=="----select" || PassengerName5=="----select" || origin=="" || destination=="" || Depdate==""){
+                            if(PassengerName1=="---select-" || PassengerName2=="---select-" || PassengerName3=="---select-" || PassengerName4=="---select-" || PassengerName5=="---select-" || origin=="" || destination=="" || Depdate==""){
                                 alert("Please fill the valid value")
                                 this.getView().byId("_IDGenButton1").setEnabled(false)
         
@@ -199,7 +202,7 @@ sap.ui.define([
                 console.log(PassengerName1Name);
                 if(PassengerName1ID==PassengerName2ID || PassengerName1ID==PassengerName3ID || PassengerName1ID==PassengerName4ID || PassengerName1ID==PassengerName5ID){
                     alert("Please fill Different name of Different ID");
-                    this.getView().byId("NameOfPassenger00").setSelectedKey("----select")
+                    this.getView().byId("NameOfPassenger00").setSelectedKey("---select-")
                     return
                 }
                 PassengerNameArr.push(PassengerName1Name)
@@ -215,7 +218,7 @@ sap.ui.define([
                 console.log(PassengerName2Name);
                 if(PassengerName2ID==PassengerName1ID || PassengerName2ID==PassengerName3ID || PassengerName2ID==PassengerName4ID || PassengerName2ID==PassengerName5ID){
                     alert("Please fill Different name of Different ID");
-                    this.getView().byId("NameOfPassenger01").setSelectedKey("----select")
+                    this.getView().byId("NameOfPassenger01").setSelectedKey("---select-")
                     return
                 }
                 PassengerNameArr.push(PassengerName2Name)
@@ -232,7 +235,7 @@ sap.ui.define([
                console.log(PassengerName3Name);
                if(PassengerName3ID==PassengerName1ID || PassengerName3ID==PassengerName2ID || PassengerName3ID==PassengerName4ID || PassengerName3ID==PassengerName5ID){
                 alert("Please fill Different name of Different ID");
-                this.getView().byId("NameOfPassenger02").setSelectedKey("----select")
+                this.getView().byId("NameOfPassenger02").setSelectedKey("---select-")
                 return
             }
                 PassengerNameArr.push(PassengerName3Name)
@@ -247,7 +250,7 @@ sap.ui.define([
                 console.log(PassengerName4Name);
                 if(PassengerName4ID==PassengerName2ID || PassengerName4ID==PassengerName1ID || PassengerName4ID==PassengerName3ID || PassengerName4ID==PassengerName5ID){
                     alert("Please fill Different name of Different ID");
-                    this.getView().byId("NameOfPassenger03").setSelectedKey("----select")
+                    this.getView().byId("NameOfPassenger03").setSelectedKey("---select-")
                     return
                 }
                 PassengerNameArr.push(PassengerName4Name)
@@ -262,7 +265,7 @@ sap.ui.define([
                 console.log(PassengerName5Name);
                 if(PassengerName5ID==PassengerName1ID || PassengerName5ID==PassengerName3ID || PassengerName2ID==PassengerName4ID || PassengerName5ID==PassengerName2ID){
                     alert("Please fill Different name of Different ID");
-                    this.getView().byId("NameOfPassenger04").setSelectedKey("----select")
+                    this.getView().byId("NameOfPassenger04").setSelectedKey("---select-")
                     return
                 }
                 PassengerNameArr.push(PassengerName5Name)
@@ -289,23 +292,28 @@ sap.ui.define([
                 NumberOfPassenger = oEvent.mParameters.arguments.NumberOfPassenger;
                 tripType = oEvent.mParameters.arguments.tripType;
                 countPassenger = oEvent.mParameters.arguments.countPassenger;
-                
 
                 if (tripType == "One_way") {
                     // console.log("gggggggg");
                     this.getView().byId("datePicker2").setEnabled(false)
                     this.getView().byId("_IDGenSwitch1").setEnabled(false)
                 }
-                
+                else{
+                    this.getView().byId("datePicker2").setEnabled(true)
+                    this.getView().byId("_IDGenSwitch1").setEnabled(true)
+                    // hotelAccomodation=this.getView().byId("_IDGenSwitch1").getText()
+                    
+                }
+                if(countPassenger++){
                 for (let index = 0; index < 5; index++) {
                     let selectfield = this.getView().byId(`NameOfPassenger0${id}`)
                     if(index<NumberOfPassenger){
-                        selectfield.setSelectedKey("----select")
+                        selectfield.setSelectedKey("---select-")
                         selectfield.setVisible(true);
                     }
                     else{
                         if(selectfield.setVisible(true)){
-                            // selectfield.setValue("----select")
+                            // selectfield.setValue("---select-")
                             selectfield.setVisible(false)
                         }
                     }
@@ -320,6 +328,7 @@ sap.ui.define([
                     //     text:"{Name}"
                     //  })
             }
+        }
             // else if(countPassenger>1){
             //     this.getView().byId(`NameOfPassenger00`).setVisible(false);
             //     this.getView().byId(`NameOfPassenger01`).setVisible(false);
@@ -633,8 +642,23 @@ sap.ui.define([
             },
 
             onSubmit: function () {
-                var [p,q]=PassengerNameArr;
-                console.log(p);
+               if(NumberOfPassenger==1){
+                PassengerNameData=`${PassengerName1Name}`
+               }
+               else if(NumberOfPassenger==2){
+                PassengerNameData=`${PassengerName1Name}, ${PassengerName2Name}`
+               }
+               else if(NumberOfPassenger==3){
+                PassengerNameData=`${PassengerName1Name}, ${PassengerName2Name}, ${PassengerName3Name}`
+               }
+               else if(NumberOfPassenger==4){
+                PassengerNameData=`${PassengerName1Name}, ${PassengerName2Name}, ${PassengerName3Name}, ${PassengerName4Name}`
+
+               }
+               else if(NumberOfPassenger==5){
+                PassengerNameData=`${PassengerName1Name}, ${PassengerName2Name}, ${PassengerName3Name}, ${PassengerName4Name}, ${PassengerName5Name}`
+
+               }
                 var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
                 if(tripType=="One_way"){
                     var oTravel = {
@@ -651,11 +675,11 @@ sap.ui.define([
                         "travelStatus": "INP",
                         "noOfDays": NumberOfdays,
                         "noOfPassengers": NumberOfPassenger,
-                        "passengerName": PassengerNameArr,
+                        "passengerName":PassengerNameData,
                         "travelType": travelType,
                         "travelMode": travelMode,
                         "RoundTrip": tripType,
-                        "Accomandation": "",
+                        "Accomandation": "NO",
                         "billable": BillableCustomer
                     }
                 }
@@ -675,11 +699,11 @@ sap.ui.define([
                         "travelStatus": "INP",
                         "noOfDays": NumberOfdays,
                         "noOfPassengers": NumberOfPassenger,
-                        "passengerName": PassengerNameArr,
+                        "passengerName": PassengerNameData,
                         "travelType": travelType,
                         "travelMode": travelMode,
                         "RoundTrip": tripType,
-                        "Accomandation": "",
+                        "Accomandation": "YES",
                         "billable": BillableCustomer
                     }
                 }
@@ -698,8 +722,8 @@ sap.ui.define([
                     .then(function (res) {
                         if (res) {
                             console.log("Entity created successfully");
-                            // oRouter.navTo("RouteView1")
-                            // location.reload();
+                            oRouter.navTo("RouteView1")
+                            location.reload();
                         }
                         else {
                             console.log("Failed");

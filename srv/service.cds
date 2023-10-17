@@ -4,7 +4,7 @@ service travelService {
 
 
     entity Employee as projection on t.Employee;
-
+    entity client as projection on t.Client;
     @odata.draft.enabled
     @cds.redirection.target
     entity Travel as projection on t.Travel actions{

@@ -1,12 +1,18 @@
-Empid,Name,email,phone_number,designation,dateofBirth,department
----,select,select,0000000,select,2000-12-31,select
-I001,Anurag,anuraginguva@gmail.com,1234567,Trainee,2002-08-21,Btp
-I002,Himanshu,himanshu@gmail.com,2345567,Trainee,2000-08-22,Btp
-I003,Ashwani,ashwani@gmail.com,3455678,Trainee,2000-08-23,ABAP
-I004,Ayush,ayush@gmail.com,2345567,Trainee,2000-08-24,Btp
-I005,Vaibhav,Vaibhav@gmail.com,463721,Trainee,2000-08-25,ABAP
-I006,Rishab,Rishab@gmail.com,467282,Trainee,2000-08-26,Btp
-I007,Vanshaj,Vanshaj@gmail.com,5637291,Trainee,2000-08-27,Fiori
-I008,Kapil,Kapil@gmail.com,3737373,Trainee,2000-08-28,Btp
-I009,Vedant,Vedant@gmail.com,7272819,Trainee,2000-08-29,Btp
-I010,Deepanshu,Deepanshu@gmail.com,3737281,Trainee,2000-08-30,Btp
+Empid,Name,email,phone_number,designation,dateofBirth,department,address,Manager,Seating_Location
+---select,,,,,,,,,
+IO11085,Anurag Inguva,anuraginguva@gmail.com,9765427987,Trainee,2002-08-21,Btp,Hno 201 Malakpet,Vempati Venkateswara Sarath,Gurugram
+IO11078,Himanshu Prakash,himanshu@gmail.com,9674198256,Trainee,2000-08-22,Btp,Hazaribag Jharkhand house 76,Vempati Venkateswara Sarath,Gurugram
+IO11074,Ashwani Sharma,ashwani@gmail.com,9756891546,Trainee,2000-08-23,ABAP,Hazaribag Jharkhand house 76,Vempati Venkateswara Sarath,Gurugram
+IO11075,Ayush Kumar,ayush@gmail.com,9658456876,Trainee,2000-08-24,Btp,Chandini Chowk house no 86 delhi,Vempati Venkateswara Sarath,Gurugram
+IO11073,Vaibhav Agrawal,Vaibhav@gmail.com,9735678914,Trainee,2000-08-25,ABAP,Naryavali Naka Ward,Vempati Venkateswara Sarath,Gurugram
+IO11072,Rishab Tiwari,Rishab@gmail.com,9753728987,Trainee,2000-08-26,Btp,gaziabad hno 17,Vempati Venkateswara Sarath,Gurugram
+IO11089,Vanshaj Agarwal,Vanshaj@gmail.com,9578541798,Trainee,2000-08-27,Fiori,flat no 56 Suraj kund,Vempati Venkateswara Sarath,Gurugram
+IO11084,Kapil Malhotra,Kapil@gmail.com,9563789654,Trainee,2000-08-28,Btp,Hno-2516/4 rajendra colony,Vempati Venkateswara Sarath,Gurugram
+IO11082,Vedant Shrivastav,Vedant@gmail.com,9531567823,Trainee,2000-08-29,Btp,13A/25 Asraf Tola,Vempati Venkateswara Sarath,Gurugram
+IO11081,Deepanshu Goyal,Deepanshu@gmail.com,9565412356,Trainee,2000-08-30,Btp,Hazaribag Jharkhand house 76,Vempati Venkateswara Sarath,Gurugram
+IO11083,Shreya Shalini,shreya@gmail.com,9876543678,Trainee,2000-08-30,Btp,Chaura Raghunathpur,Vempati Venkateswara Sarath,Gurugram
+IO11071,Shruti Kumari,shruti@gmail.com,9876590867,Trainee,2000-08-30,Btp,Chaura Raghunathpur,Vempati Venkateswara Sarath,Gurugram
+IO11080,Laxmi Prajapati,laxmi@gmail.con,9678142567,Trainee,2000-08-30,Btp,Chaura Raghunathpur,Vempati Venkateswara Sarath,Gurugram
+IO11077,Jyotishree Sahoo,jyoti@gmail.com,9678903456,Trainee,2000-08-30,Btp,Chaura Raghunathpur,Vempati Venkateswara Sarath,Gurugram
+IO11086,Mohin Khan,mohin@gmail.com,9678873456,Trainee,2000-08-30,Btp,Chaura Raghunathpur,Vempati Venkateswara Sarath,Gurugram
+IO11079,Shalini Chaudary,shalini@gmail.com,9609887345,Trainee,2000-08-30,Btp,Chaura Raghunathpur,Vempati Venkateswara Sarath,Gurugram

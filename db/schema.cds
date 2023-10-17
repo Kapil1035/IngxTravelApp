@@ -130,9 +130,21 @@ entity Employee {
         designation  : String;
         dateofBirth  : Date;
         department   : String;
-
         Travel       : Composition of many Travel    on Travel.empId = $self;
+        address : String;
+        Manager : String;
+        Seating_Location : String
+}
 
+entity Client {
+
+   key clientID : String;
+
+    Name : String;
+
+    client_location : String;
+
+    travel : Association to Travel
 
 }
 
@@ -162,11 +174,12 @@ entity Travel {
     travelStatus    : Status;
     noOfDays        : Integer;
     noOfPassengers  : NOp;
-    passengerName   : array of String;
+    passengerName   : String;
     travelType      : TType;
     travelCity      : Association to NationalCities;
     travelMode      : Mode;
     RoundTrip       : RoundTrip;
     Accomandation   : Accomandation;
     billable        : Billable;
+    client : Association to Client
 }

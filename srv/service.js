@@ -43,6 +43,73 @@ const travelService = (srv) => {
     } catch (error) {
         console.log("error is :" + error);
     }
+    try {
+
+      // Create an event handler for updating a Travel entity
+  
+      srv.on('UPDATE', 'Travel', async (req) => {
+  
+        // Extract data from the request
+  
+        const { travelId, updatedData } = req.data;
+  
+        console.log(req.data);
+  
+   
+  
+        // Check if the travelId is provided and is a valid format
+  
+        if (!travelId || typeof travelId !== 'string') {
+  
+          throw new Error('Invalid or missing travelId');
+  
+        }
+  
+   
+  
+        // Check if the updatedData is provided and is an object
+  
+        if (!updatedData || typeof updatedData !== 'object') {
+  
+          throw new Error('Invalid or missing updatedData');
+  
+        }
+  
+   
+  
+        // Use the travelId to identify the Travel entity to update
+  
+        const updatedTravel = await cds.tx(req).run(
+  
+          UPDATE(Travel)
+  
+            .set(updatedData)
+  
+            .where({ travelId: travelId })
+  
+        );
+  
+   
+  
+        // Check if any records were updated
+  
+        if (updatedTravel.length === 0) {
+  
+          throw new Error(`Travel with ID ${travelId} not found`);
+  
+        }
+  
+   
+  
+        return updatedTravel[0]; // Return the updated Travel entity
+  
+      });
+  
+    } catch (error) {
+  
+      console.error('Error:', error.message);
+  
+    }
 }
 
 
