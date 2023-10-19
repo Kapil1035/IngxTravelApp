@@ -152,9 +152,9 @@ entity Travel {
     empName         : Association to Employee;
     origin          : String;
     destination     : String;
-    dateOfDeparture : Date;
-    dateOfArrival   : Date;
-    dateOfReturn    : Date;
+    dateOfDeparture : String;
+    dateOfArrival   : String;
+    dateOfReturn    : String;
     description     : String;
     price           : Integer;
     travelStatus    : Status;

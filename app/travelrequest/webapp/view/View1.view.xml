@@ -35,11 +35,18 @@
                                         class="sapUiSmallMarginBottom"
                                         name="Name"
                                         selectionChange=".onSelectionChange"
-                                        items="{path: '/Employee', templateShareable: true }"
+                                        items="{path: '/insertTravel', templateShareable: true }"
+                                        selectedKey="{empId_Empid}"
                                     >
+                                    <core:Item
+                                    id="_IDGenItemSelect"
+                                         text="--Select"
+                                          key="" 
+            />
+                                    
                                         <core:Item
                                             id="_IDGenItem44"
-                                            text="{Name}-{Empid}"
+                                            text="{empName_Empid}-{empId_Empid}" 
                                         />
                                     </ComboBox>
                                 </fb:control>
@@ -49,7 +56,7 @@
                                 id="_IDGenFilterGroupItem4"
                                 name="SupplierNames"
                                 label="Travel status"
-                                groupName="Group1"
+                                groupName="Group2"
                                 visibleInFilterBar="true"
                             
                             >
@@ -59,12 +66,15 @@
                                         class="sapUiSmallMarginBottom"
                                         selectedKey="{travelStatus}"
                                         width="150px"
+                                        name="Status"
+                                    
                                     
                                     >
                                         <items>
-                                            <!-- <core:Item id="yi8" text="{travelStatus}" key="{travelStatus}"/> -->
+                                            <!-- <core:Item id="yi8" text="{travelStatus}" key=""/> -->
 
-                                            <core:Item
+                                            
+                                                 <core:Item
                                                 id="yi1"
                                                 text="Select"
                                             
@@ -132,6 +142,8 @@
                             press="onPress1"
                             type="Emphasized"
                         />
+                        
+                       
                 </f:content>
             </f:DynamicPageHeader>
         </f:header>
@@ -140,7 +152,8 @@
             <Table
                 id="table"
                 inset="false" mode="MultiSelect"
-                items="{                          path: '/insertTravel'                      }"
+                items="{path: '/insertTravel'}"
+                selectionChange="selectedTarvelItems"
             >
                 <headerToolbar>
                     <OverflowToolbar id="_IDGenOverflowToolbar1">
@@ -155,13 +168,29 @@
                         <!-- <Label id="_IDGenLabel1" text="Multi selection modes" labelFor="idComboBoxSuccess"></Label> -->
 
                         
+                         <Button
+                            id="button1"
+                            text="accept"
+                            press="onAcceptPress"
+                            type="Accept"
+                            width="150px"
+                            
+                        />
+                        <Button
+                            id="butto2"
+                            text="reject"
+                            press="onRejectPress"
+                            type="Reject"
+                            width="150px"
+                        />
                         <Button press="onDeleteLineItem" tooltip="Delete Selected Line Items"
+                        
 
                         id="deleteLineItem" icon="sap-icon://delete" text="Delete"/>
                     </OverflowToolbar>
                 </headerToolbar>
 
-                <columns>
+                <columns >
                     <Column
                         id="_IDGenColumn14"
                         minScreenWidth="Tablet"

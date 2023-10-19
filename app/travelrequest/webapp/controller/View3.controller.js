@@ -1,7 +1,6 @@
 sap.ui.define([
 
     "sap/ui/core/mvc/Controller",
-    // "sap/ui/core/mvc/Controller/View3",
     "sap/m/MessageToast",
 
     "sap/ui/core/Fragment",
@@ -403,8 +402,6 @@ sap.ui.define([
                 this.enableSubmitButton();
             },
 
-           
-
             handleChange: function (oEvent) {
 
              if(Depdate){
@@ -511,9 +508,7 @@ sap.ui.define([
                     this.getView().byId("_IDGenSwitch1").setState(true)
                     hotelAccVal = "Yes"
                     console.log(hotelAccVal);
-                }
-
-                
+                }              
             }
             else{
                 alert("Please fill the arrival date first");
@@ -558,15 +553,9 @@ sap.ui.define([
                 oEvent.getSource().getBinding("items").filter([]);
 
                 if (!oSelectedItem) {
-
-
-
                     return;
 
                 }
-
-
-
                 this.byId("singleCondition").setValue(oSelectedItem.getTitle());
 
             },
@@ -578,12 +567,9 @@ sap.ui.define([
                 var oFilter = new Filter("passengerName", FilterOperator.Contains, sValue);
 
                 oEvent.getSource().getBinding("items").filter([oFilter]);
-
             },
 
             onOpenDialog: function () {
-
-
 
                 // create dialog lazily
 
@@ -593,10 +579,7 @@ sap.ui.define([
 
                         name: "travelrequest.view.dialog"
 
-
-
                     });
-
                 }
 
                 this.pDialog.then(function (oDialog) {
@@ -609,15 +592,18 @@ sap.ui.define([
 
             onSubmit: function () {
                 var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-                var oTravel = {
-                    "travelId": "",
-                    "empId_Empid": PassengerName1ID,
-                    "empName_Empid": PassengerName1Name,
-                    "origin": origin,
-                    "destination": destination,
-                    "dateOfDeparture": "2023-10-11",
-                    "dateOfArrival": "2023-10-12",
-                    "dateOfReturn": "2023-10-13",
+                var oView = this.getView();
+                var  oTravel={}
+                if( travelType =="One_way"){
+
+                     oTravel = {
+                        "travelId": "",
+                        "empId_Empid": PassengerName1ID,
+                        "empName_Empid": PassengerName1Name,
+                        "origin": origin,
+                        "destination": destination,
+                    "dateOfDeparture": `${depYear}-${depMonth}-${depDate}`,
+                    "dateOfArrival":`${arrYear}-${arrMonth}-${arrDate}`,
                     "description": "Welcome buddy",
                     "price": null,
                     "travelStatus": "INP",
@@ -630,6 +616,30 @@ sap.ui.define([
                     "Accomandation": "",
                     "billable": BillableCustomer
                 }
+            } else {
+                oTravel = {
+                    "travelId": "",
+                    "empId_Empid": PassengerName1ID,
+                    "empName_Empid": PassengerName1Name,
+                    "origin": origin,
+                    "destination": destination,
+                "dateOfDeparture": `${depYear}-${depMonth}-${depDate}`,
+                "dateOfArrival":`${arrYear}-${arrMonth}-${arrDate}`,
+                "dateOfReturn": `${retYear}-${retMonth}-${retDate}`,
+                "description": "Welcome buddy",
+                "price": null,
+                "travelStatus": "INP",
+                "noOfDays": NumberOfdays,
+                "noOfPassengers": NumberOfPassenger,
+                "passengerName": PassengerNameArr,
+                "travelType": travelType,
+                "travelMode": travelMode,
+                "RoundTrip": tripType,
+                "Accomandation": "",
+                "billable": BillableCustomer
+            }
+
+            }
 
                 var JsonData = JSON.stringify(oTravel)
                 console.log(JsonData);
@@ -647,6 +657,7 @@ sap.ui.define([
                             console.log("Entity created successfully");
                             oRouter.navTo("RouteView1")
                             // location.reload();
+                            oView.getModel().refresh();
                         }
                         else {
                             console.log("Failed");

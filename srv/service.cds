@@ -7,7 +7,8 @@ service travelService {
 
     @odata.draft.enabled
     @cds.redirection.target
-    entity Travel as projection on t.Travel;
+    entity Travel as projection on t.Travel
+   
     
     entity insertTravel as projection on t.Travel;
     entity NationalCities as projection on t.NationalCities

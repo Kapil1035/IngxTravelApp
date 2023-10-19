@@ -1,199 +1,121 @@
 <mvc:View
-
     controllerName="travelrequest.controller.View4"
-
     xmlns:html="http://www.w3.org/1999/xhtml"
-
     xmlns:mvc="sap.ui.core.mvc"
-
     displayBlock="true"
-
     xmlns="sap.m"
-
     xmlns:form="sap.ui.layout.form"
-
     xmlns:core="sap.ui.core"
-
 >
-
-    <Page id="_IDGenPage1"
-
+    <Page
+        id="_IDGenPage1"
         title="Travellers Detail"
-
         titleAlignment="Center"
-
     >
-
         <form:SimpleForm id="_IDGenSimpleForm1">
-
-            <core:Title id="_IDGenTitle1" text="" />
-
- 
+            <core:Title
+                id="_IDGenTitle1"
+                text=""
+            />
 
             <Label
-
                 id="_IDGenLabel1"
-
                 text="Travel ID"
-
             />
 
- 
-
             <Text
-
                 id="_IDGenText1"
-
                 text="{travelId}"
-
             />
 
- 
-
             <Label
-
                 id="_IDGenLabel2"
-
                 text="Employee Name"
-
             />
 
- 
-
             <Text
-
                 id="_IDGenText2"
-
                 text="{empName_Empid}"
-
             />
 
- 
-
             <Label
-
                 id="_IDGenLabel3"
-
                 text="Mode of Transport"
-
             />
 
- 
-
             <Text
-
                 id="_IDGenText3"
-
                 text="{travelMode}"
-
             />
 
- 
-
             <Label
-
                 id="_IDGenLabel6"
-
                 text="Travel Status"
-
             />
 
- 
-
             <Text
-
                 id="_IDGenText6"
-
                 text="{travelStatus}"
-
             />
 
- 
-
-            <core:Title id="_IDGenTitle2" text="" />
-
- 
+            <core:Title
+                id="_IDGenTitle2"
+                text=""
+            />
 
             <Label
-
                 id="_IDGenLabel4"
-
                 text="Origin"
-
             />
 
- 
-
             <Text
-
                 id="_IDGenText4"
-
                 text="{origin}"
-
             />
 
- 
-
             <Label
-
                 id="_IDGenLabel5"
-
                 text="Destination"
-
             />
 
- 
-
             <Text
-
                 id="_IDGenText5"
-
                 text="{destination}"
-
             />
 
- 
-
+            
             <Label
-
-                id="_IDGenLabel7"
-
-                text="Hotel Accomodation"
-
+                id="_IDGenLabel9"
+                text="Trip Type"
             />
-
- 
 
             <Text
-
-                id="_IDGenText7"
-
-                text="{Accomandation}"
-
+                id="_IDGenText9"
+                text="{RoundTrip}"
             />
-
- 
-
             <Label
-
-                id="_IDGenLabel8"
-
-                text="Billable"
-
+                id="_IDGenLabel10"
+                text="Total Passengers"
             />
-
- 
 
             <Text
-
-                id="_IDGenText8"
-
-                text="{billable}"
-
+                id="_IDGenText10"
+                text="{noOfPassengers}"
             />
+            <Label
+                id="_IDGenLabel11"
+                text="Passengers Name"
+            />
+            <List
+                id="passengerList"
+            
+            >
+        
+               
+            </List>
+
+       
 
         </form:SimpleForm>
-
     </Page>
-
 </mvc:View>

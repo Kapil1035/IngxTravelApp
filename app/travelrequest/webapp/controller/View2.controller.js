@@ -24,8 +24,6 @@ sap.ui.define([
 
             onInit: function () {
 
-
-
                 this.getView().byId("_IDGenButton1").setEnabled(false);
 
 
