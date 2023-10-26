@@ -144,7 +144,7 @@ sap.ui.define([
              var oFilter = new Filter("empName_Empid", FilterOperator.Contains, oOriginName);            
              var oFilter1 = new Filter("travelStatus", FilterOperator.Contains, oOrigin1);            
              var oFilter2 = new Filter("dateOfDeparture",FilterOperator.Contains, newStartDate);            
-            //  var oFilter3 = new Filter("",FilterOperator.Contains, oOrigin3);            
+             var oFilter3 = new Filter("",FilterOperator.Contains, oOrigin3);            
 
              var oList = this.getView().byId("table");
 
@@ -192,6 +192,7 @@ sap.ui.define([
            
 
             onAcceptPress: function () {
+                var oView=this.getView()
 
                if( aSelectedTravelIds.length ==0) {
 
@@ -250,8 +251,8 @@ sap.ui.define([
                       console.log("Travel entity updated successfully");
 
                       // oRouter.navTo("RouteView1");
-
-                      location.reload();
+                       oView.getModel().refresh();
+                    //   location.reload();
 
                   } else {
 
@@ -272,6 +273,7 @@ sap.ui.define([
             },
 
             onRejectPress: function () {
+                var oView1=this.getView();
 
                 if( aSelectedTravelIds.length ==0) {
 
@@ -330,8 +332,8 @@ sap.ui.define([
                         console.log("Travel entity  status updated to Reejct successfully");
 
                         // oRouter.navTo("RouteView1");
-
-                        location.reload();
+                         oView1.getModel().refresh()
+                        // location.reload();
 
                     } else {
 

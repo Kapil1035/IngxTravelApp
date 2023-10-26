@@ -113,8 +113,15 @@
           ]
         },
         {
+          "name": "RouteView2_1",
+          "pattern": "page2/{backcount}",
+          "target": [
+            "TargetView2"
+          ]
+        },
+        {
           "name": "RouteView3",
-          "pattern": "page3/{travelType}/{travelMode}/{NumberOfPassenger}/{tripType}/{countPassenger}",
+          "pattern": "page3/{travelType}/{travelMode}/{NumberOfPassenger}/{tripType}/{countPassenger}/{salectTravelMode}/{nextcount}",
           "target": [
             "TargetView3"
           ]

@@ -62,6 +62,12 @@ sap.ui.define([
         var tripChange;
         var PassengerNameData;
         var hotelAccomodation;
+        var salectTravelMode;
+        var backcount=0;
+        var arrMatch=[];
+        var objMatch={};
+        var nextcount;
+
         // var data=oEvent.mParameters.arguments;
 
         //   var tripType=data.tripType;
@@ -83,13 +89,14 @@ sap.ui.define([
                 //    }
                 //    abc.setEnabled(false);
                 // location.reload();
-                
+                // console.log("I am in onInit");
                 // console.log(tripChange);
-                this.getView().byId("_IDGenButton1").setEnabled(false)
-                this.getView().byId("BillableCustomer").setEnabled(false)
-                this.getView().byId("_IDGenInput1").setEnabled(false)
+            
+                // this.getView().getModel().refresh();
 
+               
 
+                // console.log(salectTravelMode);
                 // console.log({Employee});
                 //    var abbb=this.getView().byId("NameOfPassenger")
                 //    debugger;
@@ -107,7 +114,7 @@ sap.ui.define([
             },
 
             enableSubmitButton:function(){
-                console.log("hello");
+                // console.log("hello");
                 if(tripType=="Round_Trip"){
                 
                 if(PassengerNameArr.length>=1 && origin && destination && billable_value && Depdate && Arrdate && Retdate){
@@ -150,7 +157,7 @@ sap.ui.define([
                 }       
                         }
             else if(tripType=="One_way"){
-                console.log("origin-",origin);
+                // console.log("origin-",origin);
                 // if(PassengerNameArr.length>=1 && origin && destination && billable_value){
                     if(PassengerName1=="---select-" || PassengerName2=="---select-" || PassengerName3=="---select-" || PassengerName4=="---select-" || PassengerName5=="---select-" || billable_value=="select" || origin=="" || destination=="" || Depdate==""){
                         alert("Please fill the valid value")
@@ -272,27 +279,46 @@ sap.ui.define([
                 this.enableSubmitButton()
             },
             backButton: function () {
+                backcount++;
                 var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-                oRouter.navTo("RouteView2");
+                oRouter.navTo("RouteView2_1",{
+                    "backcount":backcount
+                });
                 id =0;
-                // NumberOfPassenger=0;
-                // location.reload()
+                
             },
 
 
             _onRouteMatched: function (oEvent) {
-        
+               this.onInit()
+               backcount=0;
                 this.getView().byId("_IDGenSimpleForm2");
 
-                // this.getView().byId("_IDGenSimpleForm2").refresh(true, false);
-                //  var component = this.getOwnerComponent();
-                //  component.refreshBinding();
                 travelType = oEvent.mParameters.arguments.travelType;
                 travelMode = oEvent.mParameters.arguments.travelMode;
                 NumberOfPassenger = oEvent.mParameters.arguments.NumberOfPassenger;
                 tripType = oEvent.mParameters.arguments.tripType;
                 countPassenger = oEvent.mParameters.arguments.countPassenger;
+                salectTravelMode=oEvent.mParameters.arguments.salectTravelMode
+                nextcount=oEvent.mParameters.arguments.nextcount;
 
+
+                console.log("nextcount:",nextcount);
+                if(nextcount>0){
+                    this.getView().byId("_IDGenButton1").setEnabled(false)
+                    this.getView().byId("city").setSelectedKey("")
+                    this.getView().byId("city2").setSelectedKey("")
+                    this.getView().byId("billable_value").setSelectedKey("select")
+                    this.getView().byId("BillableCustomer").setSelectedKey("")
+                    this.getView().byId("BillableCustomer").setEnabled(false)
+                    this.getView().byId("datePicker").setValue("")
+                    this.getView().byId("datePicker1").setValue("")
+                    this.getView().byId("datePicker2").setValue("")
+                    this.getView().byId("_IDGenInput1").setValue("")
+                    this.getView().byId("_IDGenInput1").setEnabled(false)
+                    this.getView().byId("_IDGenSwitch1").setState(false)
+                }
+                // console.log(salectTravelMode);
                 if (tripType == "One_way") {
                     // console.log("gggggggg");
                     this.getView().byId("datePicker2").setEnabled(false)
@@ -308,7 +334,9 @@ sap.ui.define([
                 for (let index = 0; index < 5; index++) {
                     let selectfield = this.getView().byId(`NameOfPassenger0${id}`)
                     if(index<NumberOfPassenger){
-                        selectfield.setSelectedKey("---select-")
+                        if(nextcount>0){
+                            selectfield.setSelectedKey("---select-")
+                        }
                         selectfield.setVisible(true);
                     }
                     else{
@@ -318,35 +346,26 @@ sap.ui.define([
                         }
                     }
                     id = id + 1;
-                    // console.log(id);
-                    //  field= this.getView().byId("_IDGenSimpleForm2").addContent(new sap.m.MultiInput({
-                    // //   id:"MultiInputPassenger",
-                    //    width:"300px",
-
-                    //  }).setValue("hh"))
-                    //  this.getView().byId("MultiInputPassenger").addContent(new sap.m.items)({
-                    //     text:"{Name}"
-                    //  })
+                  
             }
         }
-            // else if(countPassenger>1){
-            //     this.getView().byId(`NameOfPassenger00`).setVisible(false);
-            //     this.getView().byId(`NameOfPassenger01`).setVisible(false);
-            //     this.getView().byId(`NameOfPassenger02`).setVisible(false);
-            //     this.getView().byId(`NameOfPassenger03`).setVisible(false);
-            //     this.getView().byId(`NameOfPassenger04`).setVisible(false);
+           
 
-            //     // for (let index = 0; index < NumberOfPassenger; index++) {
-            //     //     let selectfield = this.getView().byId(`NameOfPassenger0${id}`)
-            //     //         selectfield.setVisible(true);
-            //     //     id = id + 1;
-            //     // }
-            // }
+
+             if(salectTravelMode=="intercity"){
+                    this.getView().byId("city2").setVisible(false)           
+                }
+
+              else if(salectTravelMode!="intercity") {
+                this.getView().byId("city2").setVisible(true)           
+              } 
+
 
             },
 
             origin:function(){
                 origin = this.getView().byId("city").getSelectedItem().getText();
+                
                 if(origin==""){
                     alert("Please select valid origin")
                     this.getView().byId("_IDGenButton1").setEnabled(false)
@@ -357,6 +376,12 @@ sap.ui.define([
                     this.getView().byId("city2").setSelectedKey("")
                     this.getView().byId("_IDGenButton1").setEnabled(false)
                 }
+
+                if(salectTravelMode=="intercity"){
+                    destination=origin           
+                }
+              
+                // this.destination()
                 this.enableSubmitButton()
                 // console.log(origin.length);
             },
@@ -364,11 +389,12 @@ sap.ui.define([
             destination: function () {
                 // console.log(oEvent);
                 if(origin){
-                    destination = this.getView().byId("city2").getSelectedItem().getText()
-                    if(destination==""){
-                        alert("Please select valid destination")
-                        this.getView().byId("_IDGenButton1").setEnabled(false)
-                        return
+                         this.getView().byId("city2").setEnabled(true)
+                        destination = this.getView().byId("city2").getSelectedItem().getText()
+                        if(destination==""){
+                            alert("Please select valid destination")
+                            this.getView().byId("_IDGenButton1").setEnabled(false)
+                            return
                     }
                 }
                 else{
@@ -376,12 +402,13 @@ sap.ui.define([
                     this.getView().byId("city2").setSelectedKey("")
                 }
                 // console.log(destination.length);
-
-                if (origin == destination) {
-                    alert("Origin or Destination can't be same")
-                    this.getView().byId("city2").setSelectedKey("")
-                    this.getView().byId("_IDGenButton1").setEnabled(false)
-                }
+                 if(salectTravelMode!="intercity"){
+                     if (origin == destination) {
+                         alert("Origin or Destination can't be same")
+                         this.getView().byId("city2").setSelectedKey("")
+                         this.getView().byId("_IDGenButton1").setEnabled(false)
+                     }
+                 }
                 this.enableSubmitButton()
             },
 
@@ -440,7 +467,7 @@ sap.ui.define([
            
 
             handleChange: function (oEvent) {
-
+                // console.log(travelMode);
              if(Depdate){
                 var ArrLatestdate=new Date();
                 var ArrLatestDay=ArrLatestdate.getDate();
@@ -456,7 +483,7 @@ sap.ui.define([
                 arrMonth = (Arrdate.getMonth()) + 1
                 arrYear = Arrdate.getFullYear()
 
-                if(arrDate<ArrLatestDay || arrMonth<ArrLatestMonth || arrYear<ArrLatestYear){
+                if( arrMonth<ArrLatestMonth || arrYear<ArrLatestYear){
                     alert("Please fill the valid date");
                     ArroDatePicker.setValue("")
                     this.getView().byId("_IDGenInput1").setValue("")
@@ -466,22 +493,65 @@ sap.ui.define([
                 }
 
                 if (depMonth == arrMonth || arrMonth==retMonth) {
-                    if (depDate > arrDate || arrDate >retDate) {
+                    if (depDate > arrDate || arrDate >retDate ||arrDate<ArrLatestDay) {
                         alert("Arrival Date not valid")
                         this.getView().byId("datePicker1").setValue("")
                         this.getView().byId("_IDGenInput1").setValue("")
                         this.getView().byId("_IDGenSwitch1").setState(false)
                         this.getView().byId("_IDGenButton1").setEnabled(false)
+                    }
+                else{
+                  if(travelMode=="Flight"){
+                    if(arrDate>depDate){
+                        alert("Arrival date not be more than 1 day");
+                        ArroDatePicker.setValue("")
+                    }
+                  }
+                  else if(travelMode=="Train"){
+                    if(arrDate>(depDate+3)){
+                        alert("Arrival date not be more than 3 days of departure date")
+                        ArroDatePicker.setValue("")
+                    }
+                  }
+                   else if(travelMode=="Car"){
+                    if(salectTravelMode=="intercity"){
+                        if(arrDate>depDate){
+                            alert("Arrival date not be more than 1 days of departure date")
+                            ArroDatePicker.setValue("")
+                        }
+                    }
+                    else{
+                        if(arrDate>(depDate+1)){
+                            alert("Arrival date not be more than 2 days of departure date")
+                            ArroDatePicker.setValue("")
+                        }
+                    }
+                   }   
                     }
                 }
-                else if (depMonth < arrMonth || arrMonth <retMonth) {
-                    if (depDate > arrDate || arrDate>retDate) {
-                        alert("Arrival Date not valid")
-                        this.getView().byId("datePicker1").setValue("")
-                        this.getView().byId("_IDGenInput1").setValue("")
-                        this.getView().byId("_IDGenSwitch1").setState(false)
-                        this.getView().byId("_IDGenButton1").setEnabled(false)
+                else if (depMonth < arrMonth || arrMonth < retMonth) {  
+                  if(depMonth==1 || depMonth==3 || depMonth==5 || depMonth==7 || depMonth==8 || depMonth==10 || depMonth==12){
+                   if(travelMode=="Train"){
+                  if(arrDate>(depDate-28)){
+                   alert("Arrival date not be more than 3 days of departure date")
+                   ArroDatePicker.setValue("")
+                     }
+                   } 
+                   else if(salectTravelMode=="interstate"){
+                    if(arrDate>(depDate-30)){
+                        alert("Arrival date not be more than 1 days of departure date")
+                        ArroDatePicker.setValue("")
                     }
+                   }
+                   else{
+                    if(arrDate!=depDate){
+                        alert("Arrival date not valid")
+                        ArroDatePicker.setValue("")
+                    }
+                   }
+                 
+                  }
+
                 }
                 else if (depMonth > arrMonth || arrMonth >retMonth) {
                         alert("Arrival Date not valid")
@@ -571,7 +641,10 @@ sap.ui.define([
                     this.getView().byId("BillableCustomer").setEnabled(true)
                 }
                 else {
+                    BillableCustomer=""
+                    this.getView().byId("BillableCustomer").setSelectedKey("")
                     this.getView().byId("BillableCustomer").setEnabled(false)
+
 
                 }
                 this.enableSubmitButton();
@@ -642,6 +715,7 @@ sap.ui.define([
             },
 
             onSubmit: function () {
+                var oView=this.getView()
                if(NumberOfPassenger==1){
                 PassengerNameData=`${PassengerName1Name}`
                }
@@ -723,7 +797,9 @@ sap.ui.define([
                         if (res) {
                             console.log("Entity created successfully");
                             oRouter.navTo("RouteView1")
-                            location.reload();
+                            oView.getModel().refresh()
+                            // var oModel = this.getView("View1").getModel();
+                            // oModel.refresh();
                         }
                         else {
                             console.log("Failed");

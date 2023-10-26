@@ -12,7 +12,6 @@ service travelService {
     action acceptTravel();
 
     };
-    
     entity insertTravel as projection on t.Travel;
     entity NationalCities as projection on t.NationalCities
 

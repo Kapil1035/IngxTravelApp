@@ -3,9 +3,9 @@ POST http://localhost:4004/odata/v4/travel/insertTravel
 Content-Type: application/json
 
 {
- "travelId":"ING12345",
+ "travelId":"Ingenx0001",
  "empId_Empid":"I102222",
- "empName_Empid":"sdfg",
+ "empName_Empid":"ssdfg",
  "origin":"delhi",
  "destination":"noida",
  "dateOfDeparture":"2023-10-11",
@@ -16,7 +16,7 @@ Content-Type: application/json
  "travelStatus":"APD",
  "noOfDays":5,
  "noOfPassengers":"1",
- "passengerName":["Mr xaybzc"],
+ "passengerName":"[Mr xaybzc]",
  "travelType":"National",
  "travelMode":"Flight",
  "RoundTrip":"OneWay",
@@ -26,6 +26,6 @@ Content-Type: application/json
 
 
 ###
-GET http://localhost:4004/odata/v4/travel/readTravel
+GET http://localhost:4004/odata/v4/travel/Travel
 
  

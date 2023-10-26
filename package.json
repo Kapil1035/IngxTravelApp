@@ -28,6 +28,9 @@
         "[production]": {
           "kind": "dummy-auth"
         },
+        "[development]": {
+          "kind": "dummy-auth"
+        },
         "kind": "xsuaa"
       },
       "db": {

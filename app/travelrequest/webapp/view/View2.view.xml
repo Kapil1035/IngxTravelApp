@@ -1,246 +1,308 @@
 <mvc:View
-
     xmlns:form="sap.ui.layout.form"
-
     controllerName="travelrequest.controller.View2"
-
-  
-
     xmlns:mvc="sap.ui.core.mvc"
-
     displayBlock="true"
-
     xmlns:core="sap.ui.core"
-
     xmlns="sap.m"
-
 >
-
-<Page id="_IDGenPage156" title="Travel Detail">
-
- <Panel id="_IDGenPanel1" >
-
-  <Shell id="_IDGenShell1" >
-
-    <form:SimpleForm
-
-        id="_IDGenSimpleForm1"
-
-        editable="true"
-
+    <Page
+        id="_IDGenPage156"
+        title="Travel Detail"
     >
-
-     <core:Title id="_IDGenTitle1" text="" />
-
-        <Label
-
-            id="_IDGenLabel1"
-
-            text="Travel type"
-
-            required="true"
-
-            design="Bold"
-
-        />
-
-        <Select
-
-            id="country"
-
-            selectedKey="{Country}"
-
-            width="150px"
-          change=".travelType"
-        >
-
-            <items>
-
-                <core:Item id="ui6" text="select" />
-
-                <core:Item id="_IDGenItem1" text="Domestic" />
-
-                <core:Item id="_IDGenItem2" text="International" />
-
-            </items>
-
-        </Select>
-
-        <Label id="_IDGenLabel4" text=""></Label>
-
-        <Text id="_IDGenText1" text=""></Text>
-
-           
-
-        <Label
-
-            id="_IDGenLabel2"
-
-             design="Bold"
-
-             required="true"
-
-            text="Number of Passenger"
-
-        />
-
-          <Select
-
-            id="country11"
-
-            selectedKey="{Country}"
-
-            width="150px"
-          change=".NumberOfPassenger"
-        >
-
-            <items>
-
-                <core:Item id="ui61" text="select" />
-
-                <core:Item id="_IDGenItem11" text="1" />
-
-                <core:Item id="_IDGenItem21" text="2" />
-                <core:Item id="_IDGenItem22" text="3" />
-                <core:Item id="_IDGenItem23" text="4" />
-                <core:Item id="_IDGenItem24" text="5" />
-
-            </items>
-
-        </Select>
-         
-        <!-- <Input id="in8"
-
-            value=""
-
-            width="150px"
-           
-            change=".NameOfPassenger"
-
-        /> -->
-
-        <core:Title id="_IDGenTitle2" text="" />
-
-         
-
-        <Label
-
-            id="_IDGenLabel3"
-
-            text="Travel Mode"
-
-            required="true"
-
-             design="Bold"
-
-        />
-
-     
-
-        <Select
-
-            id="country1"
-
-            selectedKey="{Country}"
-
-            width="150px"
-            change=".TravelMode"
-
-        >
-
-            <items>
-
-                <core:Item id="ui" text="select" />
-
-                <core:Item id="_IDGenItem3" text="Flight" />
-
-                <core:Item id="_IDGenItem4" text="Train" />
-
-                <core:Item id="_IDGenItem5" text="Car" />
-
-                <core:Item id="_IDGenItem6" text="Other" />
-
-            </items>
-
-        </Select>
-
-
-        
-
-        <Label id="_IDGenLabel5" text=""></Label>
-
-        <Text id="_IDGenText3" text=""></Text>
-
-        <Label id="_IDGenLabel6" text="Trip type" required="true" design="Bold"></Label>
-          <Select
-
-            id="country2"
-
-            selectedKey="{Country}"
-
-            width="150px"
-           change=".TripType"
-
-        >
-
-            <items>
-
-                <core:Item id="ui1" text="select" />
-
-                <core:Item id="_IDGenItem31" text="One_way" />
-
-                <core:Item id="_IDGenItem41" text="Round_Trip" />
-
-                <!-- <core:Item id="_IDGenItem51" text="Car" />
-
-                <core:Item id="_IDGenItem61" text="Other" /> -->
-
-            </items>
-
-        </Select>
-
-        <!-- <Select
-
-            id="country2"
-
-            selectedKey="{Country}"
-
-            width="150px"
-            change=".TripType"
-
-        >
-
-            <items>
-
-                 <core:Item id="ui3" text="select" />
-
-                <core:Item id="_IDGenItem7" text="One_way" />
-
-                <core:Item id="_IDGenItem8" text="Round_Trip" />
-
-            </items>
-
-        </Select> -->
-
-    </form:SimpleForm>
-
-   
-
-  </Shell>
-
- </Panel>
-
- <Toolbar id="_IDGenToolbar1" >
-
- <ToolbarSpacer id="_IDGenToolbarSpacer1" ></ToolbarSpacer>
-  <Button id="backToFirst" text="Back" press="backToFirst" width="100px"></Button>
-
- <Button id="_IDGenButton1" type="Emphasized" text ="Next" width="150px" press="onNext"></Button>
-
- </Toolbar>
+        <Panel id="_IDGenPanel1">
+            <Shell id="_IDGenShell1">
+                <form:SimpleForm
+                    id="_IDGenSimpleForm1"
+                    editable="true"
+                >
+                    <core:Title
+                        id="_IDGenTitle1"
+                        text=""
+                    />
+
+                    <Label
+                        id="_IDGenLabel1"
+                        text="Travel type"
+                        required="true"
+                        design="Bold"
+                    />
+
+                    <Select
+                        id="country"
+                        selectedKey="{Country}"
+                        width="150px"
+                        change=".travelType"
+                    >
+                        <items>
+                            <core:Item
+                                id="ui6"
+                                text="select"
+                            />
+
+                            <core:Item
+                                id="_IDGenItem1"
+                                text="Domestic"
+                            />
+
+                            <core:Item
+                                id="_IDGenItem2"
+                                text="International"
+                            />
+                        </items>
+                    </Select>
+
+                    <Label
+                        id="_IDGenLabel4"
+                        text=""
+                    />
+
+                    <Text
+                        id="_IDGenText1"
+                        text=""
+                    />
+
+                    <Label
+                        id="_IDGenLabel2"
+                        design="Bold"
+                        required="true"
+                        text="Number of Passenger"
+                    />
+
+                    <Select
+                        id="country11"
+                        selectedKey="{Country}"
+                        width="150px"
+                        change=".NumberOfPassenger"
+                    >
+                        <items>
+                            <core:Item
+                                id="ui61"
+                                text="select"
+                            />
+
+                            <core:Item
+                                id="_IDGenItem11"
+                                text="1"
+                            />
+
+                            <core:Item
+                                id="_IDGenItem21"
+                                text="2"
+                            />
+
+                            <core:Item
+                                id="_IDGenItem22"
+                                text="3"
+                            />
+
+                            <core:Item
+                                id="_IDGenItem23"
+                                text="4"
+                            />
+
+                            <core:Item
+                                id="_IDGenItem24"
+                                text="5"
+                            />
+                        </items>
+                    </Select>
+
+                    <!-- <Input id="in8"
 
  
 
-</Page>
+            value=""
 
+ 
+
+            width="150px"
+
+           
+
+            change=".NameOfPassenger"
+
+ 
+
+        /> -->
+
+                    <core:Title
+                        id="_IDGenTitle2"
+                        text=""
+                    />
+
+                    <Label
+                        id="_IDGenLabel3"
+                        text="Travel Mode"
+                        required="true"
+                        design="Bold"
+                    />
+
+                    <Select
+                        id="country1"
+                        selectedKey="{Country}"
+                        width="150px"
+                        change=".TravelMode"
+                    >
+                        <items>
+                            <core:Item
+                                id="ui"
+                                text="select"
+                            />
+
+                            <core:Item
+                                id="_IDGenItem3"
+                                text="Flight"
+                            />
+
+                            <core:Item
+                                id="_IDGenItem4"
+                                text="Train"
+                            />
+
+                            <core:Item
+                                id="_IDGenItem5"
+                                text="Car"
+                            />
+                        </items>
+                    </Select>
+
+                    <Select
+                        id="state"
+                        selectedKey=""
+                        width="150px"
+                        change=".TravelModeArea"
+                        visible="false"
+                    >
+                        <items>
+                            <core:Item
+                                id="uiselect"
+                                text="select"
+                            />
+
+                            <core:Item
+                                id="intercity"
+                                text="intercity"
+                            />
+
+                            <core:Item
+                                id="interstate"
+                                text="interstate"
+                            />
+                        </items>
+                    </Select>
+
+                    <Label
+                        id="_IDGenLabel5"
+                        text=""
+                    />
+
+                    <Text
+                        id="_IDGenText3"
+                        text=""
+                    />
+
+                    <Label
+                        id="_IDGenLabel6"
+                        text="Trip type"
+                        required="true"
+                        design="Bold"
+                    />
+
+                    <Select
+                        id="country2"
+                        selectedKey="{Country}"
+                        width="150px"
+                        change=".TripType"
+                    >
+                        <items>
+                            <core:Item
+                                id="ui1"
+                                text="select"
+                            />
+
+                            <core:Item
+                                id="_IDGenItem31"
+                                text="One_way"
+                            />
+
+                            <core:Item
+                                id="_IDGenItem41"
+                                text="Round_Trip"
+                            />
+
+                            <!-- <core:Item id="_IDGenItem51" text="Car" />
+
+ 
+
+                <core:Item id="_IDGenItem61" text="Other" /> -->
+                        </items>
+                    </Select>
+
+                    <!-- <Select
+
+ 
+
+            id="country2"
+
+ 
+
+            selectedKey="{Country}"
+
+ 
+
+            width="150px"
+
+            change=".TripType"
+
+ 
+
+        >
+
+ 
+
+            <items>
+
+ 
+
+                 <core:Item id="ui3" text="select" />
+
+ 
+
+                <core:Item id="_IDGenItem7" text="One_way" />
+
+ 
+
+                <core:Item id="_IDGenItem8" text="Round_Trip" />
+
+ 
+
+            </items>
+
+ 
+
+        </Select> -->
+                </form:SimpleForm>
+            </Shell>
+        </Panel>
+
+        <Toolbar id="_IDGenToolbar1">
+            <ToolbarSpacer id="_IDGenToolbarSpacer1" />
+
+            <Button
+                id="backToFirst"
+                text="Back"
+                press="backToFirst"
+                width="100px"
+            />
+
+            <Button
+                id="_IDGenButton1"
+                type="Emphasized"
+                text="Next"
+                width="150px"
+                press="onNext"
+            />
+        </Toolbar>
+    </Page>
 </mvc:View>
