@@ -8,7 +8,8 @@ sap.ui.define([
 
     "sap/ui/core/Fragment",
     "sap/ui/model/FilterType",
-    "sap/m/MessageToast"
+    "sap/m/MessageToast",
+    "../utils/utilFunc"
 
 ],
 
@@ -18,7 +19,7 @@ sap.ui.define([
 
      */
 
-    function (Controller,Filter,FilterOperator,Fragment,FilterType,MessageToast) {
+    function (Controller,Filter,FilterOperator,Fragment,FilterType,MessageToast,utilFunc) {
 
         "use strict";
 
@@ -105,6 +106,10 @@ sap.ui.define([
               },
 
             onSearch: function(oEvent){
+           let combineArr=[]
+
+               var oList = this.getView().byId("table");
+                  
                 var rejectBtn= this.getView().byId("table")
                 if(!rejectBtn.getVisible()) {
 
@@ -112,55 +117,106 @@ sap.ui.define([
      
                 }
 
-             var oOrigin = this.getView().byId("input1").getSelectedItem();  
-             if(oOrigin==null){
-               oOrigin="-"
-             }
-             else{
-              oOrigin=oOrigin.getText();
+             var oOrigin = this.getView().byId("input1").getSelectedItem()
+            //  console.log(oOrigin);
+            if(oOrigin == null ){
+                oOrigin = "-"
+            }else {
+                oOrigin = oOrigin.getText();
             }
             var oOriginSplit=oOrigin.split("-") 
             var oOriginName=oOriginSplit[0]      
-            var oOriginId=oOriginSplit[1] 
+            var oOriginId=oOriginSplit[1]    
+            
+            // console.log(oOriginName);   
+            // console.log(oOriginId);
+           var oFilter1 = new Filter("empId_Empid", FilterOperator.Contains, oOriginId);            
+            
+            var oOrigin1 = this.getView().byId("input2").getSelectedItem().getText();   
+            // console.log(oOrigin1);
+            if( oOrigin1 !=='Select'){
+
+              var oFilter2 = new Filter("travelStatus", FilterOperator.Contains, oOrigin1);            
+            }
+            //  console.log(typeof(oOrigin2));  
+
+            var oOrigin3 = this.getView().byId("input3").getValue(); 
+            var startDate = Date.parse(oOrigin3) 
+
+            var oOrigin4 = this.getView().byId("input4").getValue();  
+           console.log(oOrigin3);
+            let formatedDepDATE = utilFunc.convertDate(oOrigin3)          ;
+            let formatedArrDate = utilFunc.convertDate(oOrigin4)
+            console.log(formatedDepDATE,formatedArrDate);
+
+            var oFilter3 = new Filter("dateOfDeparture",FilterOperator.GE, formatedDepDATE);                     
+            var oFilter4 = new Filter("dateOfArrival",FilterOperator.LE,formatedArrDate); 
+
+
+            if(oOrigin!="-"){
+           combineArr.push(oFilter1)
+            }
+           if(oOrigin1!="Select"){
+            combineArr.push(oFilter2)
+           }
+           if(formatedDepDATE!="Invalid Date"){
+            combineArr.push(oFilter3)
+           }
+           if(formatedArrDate!="Invalid Date"){
+            combineArr.push(oFilter4)
+           }
+           console.log(combineArr);
+           var oCombinedFilter = new Filter({
+            filters: combineArr,
+            and: true
+        });
+
+        oList.getBinding("items").filter(oCombinedFilter,FilterType.Application);
+        return
              
-             var oOrigin1 = this.getView().byId("input2").getSelectedItem().getText();
-             
+            if( formatedDepDATE !== "Invalid Date" && formatedArrDate !=="Invalid Date"){
+                console.log("I am inside  and filter");
+               var oCombinedFilter = new Filter({
+                    filters: [oFilter3, oFilter4],
+                    and: true
+                });
+
+                oList.getBinding("items").filter(oCombinedFilter,FilterType.Application);
+                return
+                
+            } else if ( formatedDepDATE !=="Invalid Date" && formatedArrDate =="Invalid Date"){
+                // oFilter3 = new Filter("dateOfDeparture",FilterOperator.GT, formatedDepDATE);
+                console.log("Im in second condition");
+                oList.getBinding("items").filter(oFilter3,FilterType.Application);
+                return
+
+            }else if ( formatedDepDATE =="Invalid Date" && formatedArrDate !="Invalid Date") {
+                // oFilter4 = new Filter("dateOfArrival",FilterOperator.LT, formatedArrDate);
+                 console.log("i am in third condition");
+                oList.getBinding("items").filter(oFilter4,FilterType.Application);
+                return
+                  
+            }
            
-            //  var oOrigin1 = this.getView().byId("input2").getSelectedItem()   
-            //  console.log(oOrigin1);
-              var oOrigin2 = this.getView().byId("input3").getValue(); 
-              var startDate=new Date(oOrigin2)  
-              var startDay=startDate.getDate()
-              var startMonth=startDate.getMonth()+1
-              var startYear=startDate.getFullYear();
-              var newStartDate=`${startDay}-${startMonth}-${startYear}`         
-            //  console.log(oOriginName);   
-            //  console.log(oOriginId);
-            //  console.log("hello");
-            //  console.log(newStartDate);      
-            //  var oOrigin3 = this.getView().byId("input4").getValue();            
+            // console.log( oOrigin, oOrigin1);
 
-            //  var oSearch = oEvent.getParameter("query");
-             var oFilter = new Filter("empName_Empid", FilterOperator.Contains, oOriginName);            
-             var oFilter1 = new Filter("travelStatus", FilterOperator.Contains, oOrigin1);            
-             var oFilter2 = new Filter("dateOfDeparture",FilterOperator.Contains, newStartDate);            
-             var oFilter3 = new Filter("",FilterOperator.Contains, oOrigin3);            
+            if(oOrigin !== "-" && oOrigin1 !="Select"){
+                console.log( oOrigin + "kk");
+            
+               var oCombinedFilter = new Filter({
+                    filters: [oFilter2, oFilter1],
+                    and: true
+                });
 
-             var oList = this.getView().byId("table");
-
-             var aFilter =[oFilter,oFilter1] ;
-             var oMaster=new Filter({
-             filters:aFilter,
-             and:false
-             })
-             if(oOrigin==null){
-              oMaster.and=false
-             }
-
-             oList.getBinding("items").filter(oMaster,FilterType.Application);
-            //  oList.getBinding("items").filter(oFilter2,FilterType.Application);
-
- 
+                oList.getBinding("items").filter(oCombinedFilter,FilterType.Application);
+                
+                
+            }else if( oOrigin =="-" && oOrigin1 !=="Select"){
+                oList.getBinding("items").filter(oFilter2,FilterType.Application);
+                     
+            }else {
+                oList.getBinding("items").filter(oFilter1,FilterType.Application)
+            }
 
             },
             selectedTarvelItems : function(oEvent){

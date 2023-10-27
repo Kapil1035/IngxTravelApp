@@ -200,10 +200,37 @@
 
      <Select
 
-            id="BillableCustomer" width="300px" items="{/Employee}" change=".BillableCustomer"
+            id="BillableCustomer" width="300px" items="" change=".BillableCustomer"
         >
             <items>
-                <core:Item id="_IDGenItem16"  text="{Name}" />
+                <core:Item id="_IDGenItem161"  text="" />
+                 </items>
+            <items>
+                <core:Item id="_IDGenItem16"  text="C001-Toshiba" />
+                 </items>
+                  <items>
+                <core:Item id="_IDGenItem17"  text="C002-Dangote" />
+                 </items>
+                  <items>
+                <core:Item id="_IDGenItem18"  text="C003-Deloitte" />
+                 </items>
+                  <items>
+                <core:Item id="_IDGenItem19"  text="C004-Energean" />
+                 </items>
+                  <items>
+                <core:Item id="_IDGenItem20"  text="C005-NFIL" />
+                 </items>
+                  <items>
+                <core:Item id="_IDGenItem21"  text="C006-E_Y" />
+                 </items>
+                  <items>
+                <core:Item id="_IDGenItem22"  text="C007-Luminous" />
+                 </items>
+                  <items>
+                <core:Item id="_IDGenItem23"  text="C008-Mankind" />
+                 </items>
+                  <items>
+                <core:Item id="_IDGenItem24"  text="C009-Veolia" />
             </items>
         </Select>
 

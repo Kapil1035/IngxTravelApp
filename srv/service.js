@@ -18,27 +18,48 @@ const travelService = (srv) => {
         srv.on('CREATE', "insertTravel", async (req) => {
             var {maxID}  = await SELECT.one`max(travelId) as maxID`.from(Travel);
             if(maxID==null){
-                maxID = "Ingenx0000";
+              maxID = "Ingenx0000";
             }
-            const splitId = maxID.split("x");
-            const id = parseInt(splitId[1])
+
+            
+      // Extract the numeric part of maxID and increment it
+      const id = parseInt(maxID.replace("Ingenx", ''), 10) + 1;
+
+      // Format the new travelId with leading zeros
+      const newTravelId = `Ingenx${id.toString().padStart(4, '0')}`;
+
+      const data = req.data;
+      data.travelId = newTravelId; // Set the new travelId
+
+      const result = await cds.tx(req).run(INSERT.into(Travel).entries(data));
+        console.log(newTravelId);
+      return result;
+
+
+
+
+
+
+            // const splitId = maxID.split("x");
+            // const id = parseInt(splitId[1])
+            // console.log(maxID);
             // console.log(id);
-          if(id<10){
-              req.data.travelId = `Ingenx000${id + 1}`;
-          }
-          else if(id>9 || id<100){
-            req.data.travelId = `Ingenx00${id + 1}`;
-          }
-          else if(id>99 || id<1000 ){
-            req.data.travelId = `Ingenx0${id + 1}`;
-          }
-          else if(id>999 || id<10000){
-            req.data.travelId = `Ingenx${id + 1}`;
-          }
-            const data = req.data
-            const result = await cds.tx(req).run(INSERT.into(Travel).entries(data))
-            // console.log(result);
-            return result;
+          // if(id<10){
+          //     req.data.travelId = `Ingenx000${id}`;
+          // }
+          // else if(id>9 || id<100){
+          //   req.data.travelId = `Ingenx00${id}`;
+          // }
+          // else if(id>99 || id<1000 ){
+          //   req.data.travelId = `Ingenx0${id}`;
+          // }
+          // else if(id>999 || id<10000){
+          //   req.data.travelId = `Ingenx${id}`;
+          // }
+            // const data = req.data
+            // const result = await cds.tx(req).run(INSERT.into(Travel).entries(data))
+            // // console.log(result);
+            // return result;
         })
     } catch (error) {
         console.log("error is :" + error);

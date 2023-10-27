@@ -305,6 +305,27 @@ sap.ui.define([
 
                 console.log("nextcount:",nextcount);
                 if(nextcount>0){
+                    // PassengerName1ID=null;
+                    // PassengerName1Name=null;
+                    // PassengerName2ID=null;
+                    // PassengerName2Name=null;
+                    // PassengerName3ID=null;
+                    // PassengerName3Name=null;
+                    // PassengerName4ID=null;
+                    // PassengerName4Name=null;
+                    // PassengerName5ID=null;
+                    // PassengerName5Name=null;
+                    // origin=null;
+                    // destination=null;
+                    // Depdate=null;
+                    // Arrdate=null;
+                    // Retdate=null;
+                    // NumberOfdays=null;
+                    // NumberOfPassenger=null;
+                    // PassengerNameData=null;
+
+
+
                     this.getView().byId("_IDGenButton1").setEnabled(false)
                     this.getView().byId("city").setSelectedKey("")
                     this.getView().byId("city2").setSelectedKey("")
@@ -741,8 +762,8 @@ sap.ui.define([
                         "empName_Empid": PassengerName1Name,
                         "origin": origin,
                         "destination": destination,
-                        "dateOfDeparture": `${depDate}-${depMonth}-${depYear}`,
-                        "dateOfArrival": `${arrDate}-${arrMonth}-${arrYear}`,
+                        "dateOfDeparture": `${depYear}-${depMonth}-${depDate}`,
+                        "dateOfArrival": `${arrYear}-${arrMonth}-${arrDate}`,
                         "dateOfReturn": "",
                         "description": "Welcome buddy",
                         "price": null,
@@ -765,9 +786,9 @@ sap.ui.define([
                         "empName_Empid": PassengerName1Name,
                         "origin": origin,
                         "destination": destination,
-                        "dateOfDeparture": `${depDate}-${depMonth}-${depYear}`,
-                        "dateOfArrival": `${arrDate}-${arrMonth}-${arrYear}`,
-                        "dateOfReturn": `${retDate}-${retMonth}-${retYear}`,
+                        "dateOfDeparture": `${depYear}-${depMonth}-${depDate}`,
+                        "dateOfArrival": `${arrYear}-${arrMonth}-${arrDate}`,
+                        "dateOfReturn": `${retYear}-${retMonth}-${retDate}`,
                         "description": "Welcome buddy",
                         "price": null,
                         "travelStatus": "INP",
@@ -797,7 +818,8 @@ sap.ui.define([
                         if (res) {
                             console.log("Entity created successfully");
                             oRouter.navTo("RouteView1")
-                            oView.getModel().refresh()
+                            location.reload()
+                            // oView.getModel().refresh()
                             // var oModel = this.getView("View1").getModel();
                             // oModel.refresh();
                         }
