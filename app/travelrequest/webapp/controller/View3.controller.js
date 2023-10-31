@@ -818,7 +818,8 @@ sap.ui.define([
                     .then(function (res) {
                         if (res) {
                             console.log("Entity created successfully");
-                            // MessageToast.show(`Travel Request Generate Successfully  Travel id=${travelId}`)
+                            // console.log(travelId);
+                            MessageToast.show(`Travel Request Generate Successfully`)
                             oRouter.navTo("RouteView1")
                             location.reload()
                             // oView.getModel().refresh()

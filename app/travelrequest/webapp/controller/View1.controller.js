@@ -30,8 +30,9 @@ sap.ui.define([
         var filter4;
         var startDatePicker; var startSelectedDate; var startFormattedDate; var startDate; var startDay; var startMonth; var startYear;
         var endDatePicker; var endSelectedDate; var endFormattedDate; var endDate; var endDay; var endMonth; var endYear;
-
-
+        var newstartDate; var newendDate;
+        var formatedDepDATE;
+        var formatedArrDate;
         
 
         return Controller.extend("travelrequest.controller.View1", {
@@ -163,32 +164,16 @@ sap.ui.define([
                     result.setDate(date.getDate() + days);
                     return result;
                   }
-                  const newDate = addDays(startDate, 90);
+                  const startarrtDate = addDays(startDate, 90);
+                  const startarrDay=startarrtDate.getDate()
+                  const startarrMonth=startarrtDate.getMonth()
+                  const startarrYear=startarrtDate.getFullYear();
+
+                  newstartDate=`${startarrMonth}/${startarrDay}/${startarrYear}`
     
                 //   console.log("dddxdsdsz", filter3.getDate());
                 //   console.log("gcgfcgfx ",CURRENT_DATE.getDate());
-                  console.log(newDate);
-
-                  var oDatePicker = this.getView().byId("input3");
-  var startDate1 = oDatePicker.getDateValue();
-
-  if (startDate1) {
-    var endDate1 = new Date(startDate1);
-    endDate1.setDate(startDate1.getDate() + 90);
-
-    var oTable = this.getView().byId("table");
-    var oBinding = oTable.getBinding("items");
-    console.log(oBinding);
-
-    try {
-      oBinding.filter([
-        new sap.ui.model.Filter("dateOfDeparture", sap.ui.model.FilterOperator.BT, startDate1, endDate1)
-      ]);
-    } catch (error) {
-      console.error("Error while filtering data: " + error);
-    }
-  }
-
+                  console.log(newstartDate);
                 console.log(startDay);
                 console.log(startMonth);
                 console.log(startYear);
@@ -211,11 +196,14 @@ sap.ui.define([
                     result.setDate(date.getDate() + days);
                     return result;
                   }
+                  const beforeendDate = addDays(endDate, -90);
+                  const newendDay=beforeendDate.getDate()
+                  const newendMonth=beforeendDate.getMonth()
+                  const newendYear=beforeendDate.getFullYear();
+
+                  newendDate=`${newendMonth}/${newendDay}/${newendYear}`
                   
-                  const CURRENT_DATE = new Date();
-                  const newDate = addDays(endDate, -90);
-                  
-                  console.log(newDate);
+                  console.log(newendDate);
 
                 console.log(endDay);
                 console.log(endMonth);
@@ -282,14 +270,25 @@ sap.ui.define([
               var oFilter2 = new Filter("travelStatus", FilterOperator.Contains, oOrigin1);            
             }
             //  console.log(typeof(oOrigin2));  
-
+           
             var oOrigin3 = this.getView().byId("input3").getValue(); 
             var startDate = Date.parse(oOrigin3) 
 
             var oOrigin4 = this.getView().byId("input4").getValue();  
            console.log(oOrigin3);
-            let formatedDepDATE = utilFunc.convertDate(oOrigin3)          ;
-            let formatedArrDate = utilFunc.convertDate(oOrigin4)
+
+           if(endDatePicker){
+            formatedDepDATE = utilFunc.convertDate(newendDate) ;
+            formatedArrDate = utilFunc.convertDate(oOrigin4)
+           }
+           if(startDatePicker){
+             formatedDepDATE = utilFunc.convertDate(oOrigin3);
+              formatedArrDate = utilFunc.convertDate(newstartDate)
+           }
+           if(startDatePicker && endDatePicker){
+            formatedDepDATE = utilFunc.convertDate(oOrigin3);
+            formatedArrDate = utilFunc.convertDate(oOrigin4)
+           }
             console.log(formatedDepDATE,formatedArrDate);
 
             var oFilter3 = new Filter("dateOfDeparture",FilterOperator.GE, formatedDepDATE);                     
