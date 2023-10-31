@@ -323,8 +323,9 @@ sap.ui.define([
                     // NumberOfdays=null;
                     // NumberOfPassenger=null;
                     // PassengerNameData=null;
-
-
+                //  if(PassengerName1 || PassengerName2 || PassengerName3 || PassengerName4 || PassengerName5 || origin || destination || Depdate || Arrdate || Retdate || NumberOfdays || NumberOfPassenger || BillableCustomer || PassengerNameData){
+                //     PassengerName1=""; PassengerName2=""; PassengerName3=""; PassengerName4=""; PassengerName5=""; origin=""; destination=""; Depdate=""; Arrdate=""; Retdate=""; NumberOfdays=""; NumberOfPassenger=""; BillableCustomer=""; PassengerNameData="";
+                // }
 
                     this.getView().byId("_IDGenButton1").setEnabled(false)
                     this.getView().byId("city").setSelectedKey("")
@@ -762,8 +763,8 @@ sap.ui.define([
                         "empName_Empid": PassengerName1Name,
                         "origin": origin,
                         "destination": destination,
-                        "dateOfDeparture": `${depYear}-${depMonth}-${depDate}`,
-                        "dateOfArrival": `${arrYear}-${arrMonth}-${arrDate}`,
+                        "dateOfDeparture": `${depDate}-${depMonth}-${depYear}`,
+                        "dateOfArrival": `${arrDate}-${arrMonth}-${arrYear}`,
                         "dateOfReturn": "",
                         "description": "Welcome buddy",
                         "price": null,
@@ -817,11 +818,13 @@ sap.ui.define([
                     .then(function (res) {
                         if (res) {
                             console.log("Entity created successfully");
+                            // MessageToast.show(`Travel Request Generate Successfully  Travel id=${travelId}`)
                             oRouter.navTo("RouteView1")
                             location.reload()
                             // oView.getModel().refresh()
                             // var oModel = this.getView("View1").getModel();
                             // oModel.refresh();
+                            // console.log(res);
                         }
                         else {
                             console.log("Failed");

@@ -58,6 +58,7 @@
                                         class="sapUiSmallMarginBottom"
                                         selectedKey="{travelStatus}"
                                         width="150px"
+                                        change=".onSelectionChange1"
                                     >
                                         <items>
                                             <!-- <core:Item id="yi8" text="{travelStatus}" key="{travelStatus}"/> -->
@@ -96,7 +97,7 @@
                                     <DatePicker
                                         xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
                                         id="input3"
-                                        change="handleChange"
+                                        change="onSelectionChange2"
                                         class="sapUiSmallMarginBottom"
                                         placeholder="Start Date"
                                         cd:w5g.dt.context="/Travel"
@@ -116,13 +117,20 @@
                                     <DatePicker
                                         id="input4"
                                         placeholder="End Date"
-                                        change="handleChange"
+                                        change="onSelectionChange3"
                                         class="sapUiSmallMarginBottom"
                                     />
                                 </fb:control>
                             </fb:FilterGroupItem>
                         </fb:filterGroupItems>
                     </fb:FilterBar>
+                              <Button
+                        id="clearButton"
+                        text="clear"
+                        press="clearDate"
+                        type="Emphasized"
+                        class="clearButton"
+                    />
                     <Button
                         id="button"
                         text="create"
@@ -138,8 +146,12 @@
                 id="table"
                 inset="false"
                 mode="MultiSelect"
+                
                 selectionChange="selectedTarvelItems"
-                items="{path: '/insertTravel' }"
+                items="{path: '/insertTravel', sorter : {
+            path : 'travelId',
+            descending: true
+         } }"
             >
                 <headerToolbar>
                     <OverflowToolbar id="_IDGenOverflowToolbar1">
